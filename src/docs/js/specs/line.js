@@ -1,7 +1,7 @@
 import toVega from 'to-vega/index';
 import theme from '../../../finch/js/theme';
 
-export default toVega('data/sunspot.month.csv')
+export default toVega('data/sunspot-month.csv')
   .config(theme)
   .width(400)
   .height(200)
@@ -12,6 +12,6 @@ export default toVega('data/sunspot.month.csv')
     scale: {type: 'time', nice: {interval: 'year', step: 10}},
     timeUnit: 'year'
   })
-  .y('sunspot\\.month', 'quantitative', {
+  .y('sunspotMonth', 'quantitative', {
     axis: {title: 'Number of sunspots'}
   }).spec;

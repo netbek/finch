@@ -31,7 +31,7 @@ class App extends Component {
 
           <h3>Scatter plot</h3>
           <figure>
-            <div id="scatter-plot" />
+            <div id="scatter" />
           </figure>
 
           <h3>XY heatmap</h3>
@@ -62,19 +62,24 @@ class App extends Component {
             <div id="histogram" />
           </figure>
 
+          <h3>Strip plot</h3>
+          <figure>
+            <div id="strip" />
+          </figure>
+
           <h3>Dot plot</h3>
           <figure>
-            <div id="dot-plot" />
+            <div id="dot" />
           </figure>
 
           <h3>Box plot</h3>
           <figure>
-            <div id="box-plot" />
+            <div id="box" />
           </figure>
 
           <h3>Violin plot</h3>
           <figure>
-            <div id="violin-plot" />
+            <div id="violin" />
           </figure>
         </section>
 
@@ -88,7 +93,7 @@ class App extends Component {
 
           <h3>Column</h3>
           <figure>
-            <div id="column" />
+            <div id="column-time" />
           </figure>
 
           <h3>Calendar heatmap</h3>
@@ -99,10 +104,25 @@ class App extends Component {
 
         <section>
           <h2>Magnitude</h2>
+
+          <h3>Column</h3>
+          <figure>
+            <div id="column-magnitude" />
+          </figure>
+
+          <h3>Bar</h3>
+          <figure>
+            <div id="bar-magnitude" />
+          </figure>
         </section>
 
         <section>
           <h2>Part-to-whole</h2>
+
+          <h3>Stacked column</h3>
+          <figure>
+            <div id="stacked-column" />
+          </figure>
         </section>
 
         <section>
@@ -111,6 +131,25 @@ class App extends Component {
 
         <section>
           <h2>Flow</h2>
+        </section>
+
+        <section>
+          <h2>Small multiples</h2>
+
+          <h3>Histogram</h3>
+          <figure>
+            <div id="histogram-facet" />
+          </figure>
+
+          <h3>Repeated scatter plot</h3>
+          <figure>
+            <div id="scatter-repeat-column" />
+          </figure>
+
+          <h3>Scatter plot matrix</h3>
+          <figure>
+            <div id="scatter-matrix" />
+          </figure>
         </section>
       </React.Fragment>
     );

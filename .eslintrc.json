@@ -12,6 +12,7 @@
     "_": true,
     "React": true,
     "ReactDOM": true,
+    "vega": true,
     "vegaEmbed": true
   },
   "plugins": [

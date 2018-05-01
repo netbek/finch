@@ -1,12 +1,12 @@
 /**
- * See https://github.com/vega/vega-parser/blob/master/src/config.js
+ * https://github.com/vega/vega-parser/blob/master/src/config.js
  */
+import {scheme} from 'vega';
 
 // Color
-const defaultColor = 'blue';
+const defaultColor = scheme('category10')[0];
 const darkGrey = '#252525';
 const lightGrey = '#ccc';
-const red = '#f00';
 
 // Typography
 const sansSerif = 'Helvetica, Arial, sans-serif';
@@ -27,26 +27,34 @@ export default {
     labelFontSize: fontSize,
     labelFontWeight: 'normal',
     titleColor: darkGrey,
-    titleFont: monospace,
+    titleFont: serif,
     titleFontSize: fontSize,
-    titleFontWeight: 'normal'
+    titleFontWeight: 'bold'
+  },
+  bar: {
+    fill: defaultColor
   },
   legend: {
     labelFont: monospace,
     labelFontSize: fontSize,
     labelFontWeight: 'normal',
-    titleFont: monospace,
+    titleFont: serif,
     titleFontSize: fontSize,
-    titleFontWeight: 'normal'
+    titleFontWeight: 'bold'
   },
   line: {
     stroke: defaultColor
   },
+  range: {
+    category: {
+      scheme: 'category10'
+    }
+  },
   style: {
     'guide-title': {
-      font: monospace,
+      font: serif,
       fontSize: fontSize,
-      fontWeight: 'normal'
+      fontWeight: 'bold'
     },
     'guide-label': {
       font: monospace,
@@ -58,7 +66,7 @@ export default {
     color: darkGrey,
     font: serif,
     fontSize: 16,
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     offset: 12
   }
 };

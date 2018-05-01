@@ -68,6 +68,7 @@ module.exports = {
     lodash: '_',
     react: 'React',
     'react-dom': 'ReactDOM',
+    vega: 'vega',
     'vega-embed': 'vegaEmbed'
   }
 };
