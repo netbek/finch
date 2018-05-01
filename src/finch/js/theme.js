@@ -10,8 +10,7 @@ const lightGrey = '#ccc';
 
 // Typography
 const sansSerif = 'Helvetica, Arial, sans-serif';
-const serif =
-  'et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif';
+const serif = 'Georgia, Times, serif';
 const monospace = 'Consolas, "Liberation Mono", Menlo, Courier, monospace';
 const letterSpacing = 'normal';
 const fontSize = 12;
