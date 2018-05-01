@@ -4,7 +4,6 @@ const fs = require('fs-extra');
 const gulp = require('gulp');
 const gulpConcat = require('gulp-concat');
 const gulpCssmin = require('gulp-cssmin');
-const gulpGhPages = require('gulp-gh-pages');
 const gulpPostcss = require('gulp-postcss');
 const gulpRename = require('gulp-rename');
 const gulpSass = require('gulp-sass');
@@ -346,10 +345,6 @@ gulp.task('livereload', function() {
     'livereload-init',
     'watch:livereload'
   );
-});
-
-gulp.task('deploy', function() {
-  return gulp.src(path.join(gulpConfig.docs.dist, '**/*')).pipe(gulpGhPages());
 });
 
 /* -----------------------------------------------------------------------------
