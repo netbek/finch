@@ -1,0 +1,11 @@
+{
+  "name": "tufte-css",
+  "version": "0.0.0",
+  "description": "-",
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "readme": "-",
+  "_napaResolved": "https://github.com/edwardtufte/tufte-css/archive/v1.3.tar.gz"
+}
