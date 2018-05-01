@@ -7,10 +7,6 @@ export default toVega('data/iris.csv')
   .width(200)
   .height(200)
   .circle()
-  .x('petalLength', 'quantitative', {
-    axis: {title: 'Petal length'}
-  })
-  .y('sepalLength', 'quantitative', {
-    axis: {title: 'Sepal length'}
-  })
-  .color('species', 'nominal', {title: 'Species'}).spec;
+  .x('petalLength', 'quantitative')
+  .y('sepalLength', 'quantitative')
+  .color('species', 'nominal').spec;

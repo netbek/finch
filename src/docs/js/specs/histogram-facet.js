@@ -12,9 +12,8 @@ export default toVega('data/iris.csv')
   .open()
   .width(100)
   .height(100)
-  .bar()
+  .bar({binSpacing: 0})
   .x('sepalLength', 'quantitative', {
-    title: 'sepalLength',
     bin: true
   })
   .y(null, 'quantitative', {aggregate: 'count'}).spec;

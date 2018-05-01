@@ -14,7 +14,10 @@ module.exports = {
   },
   docs: {
     src: rootPath + 'src/docs/',
-    dist: rootPath + 'docs/'
+    dist: {
+      dev: rootPath + 'temp/',
+      prod: rootPath + 'docs/'
+    }
   },
   finch: {
     src: rootPath + 'src/finch/',
@@ -26,9 +29,9 @@ module.exports = {
     path: '/',
     livereload: false,
     directoryListing: false,
-    open: '/docs/',
+    open: '/temp/',
     https: false,
-    fallback: 'docs/index.html', // For SPAs that manipulate browser history
+    fallback: 'temp/index.html', // For SPAs that manipulate browser history
     browsers: {
       default: 'firefox',
       darwin: 'google chrome',

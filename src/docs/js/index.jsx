@@ -14,7 +14,8 @@ class App extends Component {
             source: true,
             compiled: false,
             editor: false
-          }
+          },
+          renderer: 'svg'
         });
       });
   }
@@ -36,21 +37,16 @@ class App extends Component {
 
           <h3>XY heatmap</h3>
           <figure>
-            <div id="xy-heatmap" />
+            <div id="xy-heatmap">TODO</div>
           </figure>
         </section>
 
         <section>
           <h2>Ranking</h2>
 
-          <h3>Ordered bar</h3>
+          <h3>Ordered bar chart</h3>
           <figure>
             <div id="ordered-bar" />
-          </figure>
-
-          <h3>Ordered column</h3>
-          <figure>
-            <div id="ordered-column" />
           </figure>
         </section>
 
@@ -69,17 +65,17 @@ class App extends Component {
 
           <h3>Dot plot</h3>
           <figure>
-            <div id="dot" />
+            <div id="dot">TODO</div>
           </figure>
 
           <h3>Box plot</h3>
           <figure>
-            <div id="box" />
+            <div id="box">TODO</div>
           </figure>
 
           <h3>Violin plot</h3>
           <figure>
-            <div id="violin" />
+            <div id="violin">TODO</div>
           </figure>
         </section>
 
@@ -98,7 +94,7 @@ class App extends Component {
 
           <h3>Calendar heatmap</h3>
           <figure>
-            <div id="calendar-heatmap" />
+            <div id="calendar-heatmap">TODO</div>
           </figure>
         </section>
 
@@ -107,12 +103,12 @@ class App extends Component {
 
           <h3>Column</h3>
           <figure>
-            <div id="column-magnitude" />
+            <div id="column-magnitude">TODO</div>
           </figure>
 
           <h3>Bar</h3>
           <figure>
-            <div id="bar-magnitude" />
+            <div id="bar-magnitude">TODO</div>
           </figure>
         </section>
 
@@ -121,7 +117,7 @@ class App extends Component {
 
           <h3>Stacked column</h3>
           <figure>
-            <div id="stacked-column" />
+            <div id="stacked-column">TODO</div>
           </figure>
         </section>
 

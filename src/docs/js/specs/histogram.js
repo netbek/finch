@@ -6,7 +6,7 @@ export default toVega('data/iris.csv')
   .title(`Edgar Anderson's Iris Data`)
   .width(200)
   .height(200)
-  .bar()
+  .bar({binSpacing: 0})
   .x('sepalLength', 'quantitative', {
     bin: true
   })

@@ -8,5 +8,8 @@ nbproject
 .idea
 .netbeans.xml
 
+# Temporary
+temp
+
 # GH pages
 .publish
