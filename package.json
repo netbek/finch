@@ -36,8 +36,6 @@
     "samsung >= 5"
   ],
   "dependencies": {
-    "lodash": "^4.17.10",
-    "prism-themes": "^1.0.1",
     "vega": "^3.3.1",
     "vega-embed": "^3.9.0",
     "vega-lite": "^2.4.1"
@@ -78,11 +76,13 @@
     "gulp-sass": "^4.0.1",
     "gulp-webserver": "^0.9.1",
     "livereload": "^0.7.0",
+    "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "open": "0.0.5",
     "papaparse": "^4.4.0",
     "pkg-dir": "^2.0.0",
     "prettier": "^1.12.1",
+    "prism-themes": "^1.0.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "run-sequence": "^2.2.1",
