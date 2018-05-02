@@ -195,6 +195,11 @@ class Spec {
     return this.__mark('bar', opts);
   }
 
+  // https://vega.github.io/vega-lite/docs/compositemark.html#boxplot
+  boxplot(opts) {
+    return this.__mark('box-plot', opts);
+  }
+
   // https://vega.github.io/vega-lite/docs/circle.html
   circle(opts) {
     return this.__mark('circle', opts);

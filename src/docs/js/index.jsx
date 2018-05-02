@@ -15,7 +15,7 @@ class App extends Component {
             compiled: false,
             editor: false
           },
-          renderer: 'svg'
+          renderer: 'canvas'
         });
       });
   }
@@ -69,9 +69,9 @@ class App extends Component {
             <div id="dotplot">TODO</div>
           </figure>
 
-          <h3>Box plot</h3>
+          <h3>Boxplot</h3>
           <figure>
-            <div id="boxplot">TODO</div>
+            <div id="boxplot" />
           </figure>
 
           <h3>Violin plot</h3>
