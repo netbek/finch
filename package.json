@@ -6,7 +6,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "src/js/**/*",
+    "src/js/",
     "umd/"
   ],
   "repository": {
