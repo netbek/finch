@@ -1,6 +1,23 @@
 import {isArray, isObject, isString} from 'vega';
 import {finch as theme} from './themes';
 
+const typeMap = {
+  q: 'quantitative',
+  o: 'ordinal',
+  n: 'nominal',
+  t: 'temporal'
+};
+
+const get = (map, key, defaultValue) => {
+  if (!isString(key)) {
+    return defaultValue;
+  }
+  if (key.length === 1) {
+    return map[key];
+  }
+  return key;
+};
+
 class Spec {
   constructor(data) {
     this.spec = {
@@ -62,9 +79,9 @@ class Spec {
 
     if (field) {
       result.field = field;
-      result.type = type;
+      result.type = get(typeMap, type);
     } else if (type) {
-      result.type = type;
+      result.type = get(typeMap, type);
     }
 
     if (isObject(opts)) {
