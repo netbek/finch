@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const {browserslist} = require('./package.json');
 
 module.exports = {
@@ -56,15 +54,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      include: /\.min\.js$/
-    })
-  ],
   externals: {
     lodash: '_',
     react: 'React',

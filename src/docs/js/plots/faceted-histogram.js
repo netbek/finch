@@ -1,4 +1,4 @@
-import finch from '../../../finch/js';
+import finch from '../../../js';
 
 const {spec} = finch('data/iris.csv')
   .width(150)

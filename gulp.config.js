@@ -19,9 +19,11 @@ module.exports = {
       prod: rootPath + 'docs/'
     }
   },
-  finch: {
-    src: rootPath + 'src/finch/',
-    dist: rootPath + 'finch/'
+  module: {
+    src: rootPath + 'src/',
+    dist: {
+      umd: rootPath + 'umd/'
+    }
   },
   webserver: {
     host: 'localhost',

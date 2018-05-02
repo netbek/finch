@@ -19,6 +19,7 @@ const Promise = require('bluebird');
 const runSequence = require('run-sequence');
 const webpack = require('webpack');
 const webserver = require('gulp-webserver');
+const {name} = require('./package.json');
 
 Promise.promisifyAll(fs);
 
@@ -28,7 +29,8 @@ Promise.promisifyAll(fs);
 
 const gulpConfig = require('./gulp.config');
 
-const webpackConfig = require('./webpack.config');
+const webpackConfigDev = require('./webpack.config.dev');
+const webpackConfigProd = require('./webpack.config.prod');
 
 const livereloadOpen =
   (gulpConfig.webserver.https ? 'https' : 'http') +
@@ -93,6 +95,41 @@ function buildCss(src, dist, distName = 'app.css') {
   });
 }
 
+function buildJs(config) {
+  return new Promise((resolve, reject) => {
+    webpack(config, function(err, stats) {
+      if (err) {
+        log('[webpack]', err);
+        reject();
+      } else {
+        log(
+          '[webpack]',
+          stats.toString({
+            cached: false,
+            cachedAssets: false,
+            children: true,
+            chunks: false,
+            chunkModules: false,
+            chunkOrigins: true,
+            colors: true,
+            entrypoints: false,
+            errorDetails: false,
+            hash: false,
+            modules: false,
+            performance: true,
+            reasons: true,
+            source: false,
+            timings: true,
+            version: true,
+            warnings: true
+          })
+        );
+        resolve();
+      }
+    });
+  });
+}
+
 function buildJsExample(src, dest) {
   return fs.readFileAsync(src, 'utf8').then(data => {
     const code = data
@@ -110,6 +147,35 @@ function buildJsExample(src, dest) {
 
     return fs.outputFileAsync(dest, html, 'utf8');
   });
+}
+
+function buildModuleClean(build) {
+  return fs.emptyDirAsync(gulpConfig.module.dist.umd);
+}
+
+/**
+ *
+ * @param   {string}   build
+ * @returns {Promise}
+ */
+function buildModuleJs(build) {
+  return Promise.mapSeries(
+    [
+      {
+        ...webpackConfigProd,
+        entry: {
+          [name]: path.join(gulpConfig.module.src, 'js/index.js'),
+          [name + '.min']: path.join(gulpConfig.module.src, 'js/index.js')
+        },
+        output: {
+          filename: '[name].js',
+          path: path.join(gulpConfig.module.dist.umd),
+          libraryTarget: 'umd'
+        }
+      }
+    ],
+    config => buildJs(config)
+  );
 }
 
 function buildDocsClean(build) {
@@ -152,49 +218,20 @@ function buildDocsJsExamples(build) {
  * @returns {Promise}
  */
 function buildDocsJs(build) {
-  const config = {
-    ...webpackConfig,
-    entry: {docs: path.join(gulpConfig.docs.src, 'js/index.jsx')},
-    output: {
-      filename: build === DEV ? '[name].js' : '[name].min.js',
-      path: path.join(gulpConfig.docs.dist[build], 'js')
-    }
-  };
+  const config = build === DEV ? webpackConfigDev : webpackConfigProd;
 
-  return buildDocsJsExamples(build).then(
-    () =>
-      new Promise((resolve, reject) => {
-        webpack(config, function(err, stats) {
-          if (err) {
-            log('[webpack]', err);
-            reject();
-          } else {
-            log(
-              '[webpack]',
-              stats.toString({
-                cached: false,
-                cachedAssets: false,
-                children: true,
-                chunks: false,
-                chunkModules: false,
-                chunkOrigins: true,
-                colors: true,
-                entrypoints: false,
-                errorDetails: false,
-                hash: false,
-                modules: false,
-                performance: true,
-                reasons: true,
-                source: false,
-                timings: true,
-                version: true,
-                warnings: true
-              })
-            );
-            resolve();
-          }
-        });
-      })
+  return buildDocsJsExamples(build).then(() =>
+    buildJs({
+      ...config,
+      entry: {
+        docs: path.join(gulpConfig.docs.src, 'js/index.jsx'),
+        'docs.min': path.join(gulpConfig.docs.src, 'js/index.jsx')
+      },
+      output: {
+        filename: '[name].js',
+        path: path.join(gulpConfig.docs.dist[build], 'js')
+      }
+    })
   );
 }
 
@@ -284,6 +321,22 @@ function startWatch(files, tasks, livereload) {
 /* -----------------------------------------------------------------------------
  * Tasks
  ---------------------------------------------------------------------------- */
+
+gulp.task('build', function(cb) {
+  runSequence('build-docs:prod', 'build-module', cb);
+});
+
+gulp.task('build-module', function(cb) {
+  runSequence('build-module-clean', 'build-module-js', cb);
+});
+
+gulp.task('build-module-clean', function() {
+  return buildModuleClean(PROD);
+});
+
+gulp.task('build-module-js', function() {
+  return buildModuleJs(PROD);
+});
 
 gulp.task('build-docs:dev', function(cb) {
   runSequence(
@@ -398,7 +451,7 @@ gulp.task('watch:livereload', function() {
       files: [
         path.join(gulpConfig.docs.src, 'js/**/*.js'),
         path.join(gulpConfig.docs.src, 'js/**/*.jsx'),
-        path.join(gulpConfig.finch.src, 'js/**/*.js')
+        path.join(gulpConfig.module.src, 'js/**/*.js')
       ],
       tasks: ['build-docs-js:dev']
     },
@@ -428,4 +481,4 @@ gulp.task('livereload', function() {
  * Default task
  ---------------------------------------------------------------------------- */
 
-gulp.task('default', ['build-docs:prod']);
+gulp.task('default', ['build']);

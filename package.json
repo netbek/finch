@@ -2,7 +2,13 @@
   "name": "finch",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/js/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "src/js/**/*",
+    "umd/"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/netbek/finch"
