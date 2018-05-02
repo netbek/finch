@@ -1,9 +1,12 @@
-import toVega from 'to-vega/index';
-import theme from '../../../finch/js/theme';
+import finch from '../../../finch/js';
 
-const {spec} = toVega('data/sunspot-month.csv')
+const {spec} = finch({
+  url: 'data/sunspot-month.csv',
+  format: {
+    parse: {date: 'date:"%Y-%m"'}
+  }
+})
   .transform([{filter: {timeUnit: 'year', field: 'date', equal: 2001}}])
-  .config(theme)
   .width(400)
   .height(200)
   .title('Monthly sunspot data, 2001')
@@ -14,9 +17,5 @@ const {spec} = toVega('data/sunspot-month.csv')
     timeUnit: 'month'
   })
   .y('value', 'quantitative');
-
-spec.data.format = {
-  parse: {date: 'date:"%Y-%m"'}
-};
 
 export default spec;

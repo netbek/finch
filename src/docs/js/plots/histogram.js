@@ -1,8 +1,6 @@
-import toVega from 'to-vega/index';
-import theme from '../../../finch/js/theme';
+import finch from '../../../finch/js';
 
-export default toVega('data/iris.csv')
-  .config(theme)
+export default finch('data/iris.csv')
   .title(`Edgar Anderson's Iris Data`)
   .width(200)
   .height(200)
