@@ -1,7 +1,10 @@
+import {readFileSync} from 'fs';
+import {join} from 'path';
 import _ from 'lodash';
 import React, {Component} from 'react';
 import vegaEmbed from 'vega-embed';
 import * as plots from './plots';
+import Example from './example';
 
 class App extends Component {
   componentDidMount() {
@@ -35,6 +38,9 @@ class App extends Component {
           <figure>
             <div id="scatterplot" />
           </figure>
+          <Example>
+            {readFileSync(join(__dirname, 'plots/scatterplot.js.html'), 'utf8')}
+          </Example>
 
           <h3>XY heatmap</h3>
           <figure>
@@ -49,6 +55,12 @@ class App extends Component {
           <figure>
             <div id="ordered-barplot" />
           </figure>
+          <Example>
+            {readFileSync(
+              join(__dirname, 'plots/ordered-barplot.js.html'),
+              'utf8'
+            )}
+          </Example>
         </section>
 
         <section>
@@ -58,11 +70,17 @@ class App extends Component {
           <figure>
             <div id="histogram" />
           </figure>
+          <Example>
+            {readFileSync(join(__dirname, 'plots/histogram.js.html'), 'utf8')}
+          </Example>
 
           <h3>Strip plot</h3>
           <figure>
             <div id="stripplot" />
           </figure>
+          <Example>
+            {readFileSync(join(__dirname, 'plots/stripplot.js.html'), 'utf8')}
+          </Example>
 
           <h3>Dot plot</h3>
           <figure>
@@ -73,6 +91,9 @@ class App extends Component {
           <figure>
             <div id="boxplot" />
           </figure>
+          <Example>
+            {readFileSync(join(__dirname, 'plots/boxplot.js.html'), 'utf8')}
+          </Example>
 
           <h3>Violin plot</h3>
           <figure>
@@ -87,11 +108,20 @@ class App extends Component {
           <figure>
             <div id="lineplot" />
           </figure>
+          <Example>
+            {readFileSync(join(__dirname, 'plots/lineplot.js.html'), 'utf8')}
+          </Example>
 
           <h3>Column bar chart</h3>
           <figure>
             <div id="column-barplot" />
           </figure>
+          <Example>
+            {readFileSync(
+              join(__dirname, 'plots/column-barplot.js.html'),
+              'utf8'
+            )}
+          </Example>
 
           <h3>Calendar heatmap</h3>
           <figure>
@@ -139,6 +169,12 @@ class App extends Component {
           <figure>
             <div id="dot-dash-plot" />
           </figure>
+          <Example>
+            {readFileSync(
+              join(__dirname, 'plots/dot-dash-plot.js.html'),
+              'utf8'
+            )}
+          </Example>
         </section>
 
         <section>
@@ -148,11 +184,23 @@ class App extends Component {
           <figure>
             <div id="faceted-histogram" />
           </figure>
+          <Example>
+            {readFileSync(
+              join(__dirname, 'plots/faceted-histogram.js.html'),
+              'utf8'
+            )}
+          </Example>
 
           <h3>Scatterplot matrix</h3>
           <figure>
             <div id="scatterplot-matrix" />
           </figure>
+          <Example>
+            {readFileSync(
+              join(__dirname, 'plots/scatterplot-matrix.js.html'),
+              'utf8'
+            )}
+          </Example>
         </section>
       </React.Fragment>
     );

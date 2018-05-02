@@ -1,9 +1,9 @@
 import finch from '../../../finch/js';
 
-export default finch('data/iris.csv')
+const {spec} = finch('data/iris.csv')
   .config({
     axisX: {titlePadding: 10},
-    axisY: {titlePadding: -20}
+    axisY: {titlePadding: -15}
   })
   .hconcat(
     finch()
@@ -35,4 +35,6 @@ export default finch('data/iris.csv')
         })
         .color('species', 'nominal', {legend: null})
     )
-  ).spec;
+  );
+
+export default spec;

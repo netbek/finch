@@ -1,6 +1,6 @@
 import finch from '../../../finch/js';
 
-export default finch('data/iris.csv').repeat(
+const {spec} = finch('data/iris.csv').repeat(
   {
     row: ['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth'],
     column: ['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth']
@@ -12,4 +12,6 @@ export default finch('data/iris.csv').repeat(
     .x({repeat: 'column'}, 'quantitative')
     .y({repeat: 'row'}, 'quantitative')
     .color('species', 'nominal')
-).spec;
+);
+
+export default spec;

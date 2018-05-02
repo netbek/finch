@@ -1,6 +1,6 @@
 import finch from '../../../finch/js';
 
-export default finch('data/iris.csv')
+const {spec} = finch('data/iris.csv')
   .title(`Edgar Anderson's Iris Data`)
   .width(200)
   .height(200)
@@ -8,4 +8,6 @@ export default finch('data/iris.csv')
   .x('sepalLength', 'quantitative', {
     bin: true
   })
-  .y(null, 'quantitative', {aggregate: 'count'}).spec;
+  .y(null, 'quantitative', {aggregate: 'count'});
+
+export default spec;

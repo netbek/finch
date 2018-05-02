@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const autoprefixer = require('autoprefixer');
 const fs = require('fs-extra');
+const glob = require('glob-promise');
 const gulp = require('gulp');
 const gulpConcat = require('gulp-concat');
 const gulpCssmin = require('gulp-cssmin');
@@ -13,6 +14,7 @@ const open = require('open');
 const os = require('os');
 const path = require('path');
 const pkgDir = require('pkg-dir');
+const Prism = require('node-prismjs');
 const Promise = require('bluebird');
 const runSequence = require('run-sequence');
 const webpack = require('webpack');
@@ -91,6 +93,25 @@ function buildCss(src, dist, distName = 'app.css') {
   });
 }
 
+function buildJsExample(src, dest) {
+  return fs.readFileAsync(src, 'utf8').then(data => {
+    const code = data
+      .replace('\r\n', '\n')
+      .replace('\r', '\n')
+      .split('\n')
+      .filter(d => !(d.startsWith('import') || d.startsWith('export')))
+      .join('\n')
+      .trim();
+
+    const html = `<pre><code>${Prism.highlight(
+      code,
+      Prism.languages.javascript
+    )}</code></pre>`;
+
+    return fs.outputFileAsync(dest, html, 'utf8');
+  });
+}
+
 function buildDocsClean(build) {
   return fs.emptyDirAsync(gulpConfig.docs.dist[build]);
 }
@@ -110,12 +131,27 @@ function buildDocsData(build) {
   return fs.removeAsync(dest).then(() => fs.copyAsync(src, dest));
 }
 
+function buildDocsJsExamples(build) {
+  return glob(path.join(gulpConfig.docs.src, 'js/plots/*.js')).then(files =>
+    Promise.mapSeries(files, file =>
+      buildJsExample(
+        file,
+        path.join(
+          gulpConfig.docs.src,
+          'js/plots',
+          path.basename(file) + '.html'
+        )
+      )
+    )
+  );
+}
+
 /**
  *
  * @param   {string}   build
- * @param   {Function} cb
+ * @returns {Promise}
  */
-function buildDocsJs(build, cb) {
+function buildDocsJs(build) {
   const config = {
     ...webpackConfig,
     entry: {docs: path.join(gulpConfig.docs.src, 'js/index.jsx')},
@@ -125,36 +161,41 @@ function buildDocsJs(build, cb) {
     }
   };
 
-  webpack(config, function(err, stats) {
-    if (err) {
-      log('[webpack]', err);
-    }
-
-    log(
-      '[webpack]',
-      stats.toString({
-        cached: false,
-        cachedAssets: false,
-        children: true,
-        chunks: false,
-        chunkModules: false,
-        chunkOrigins: true,
-        colors: true,
-        entrypoints: false,
-        errorDetails: false,
-        hash: false,
-        modules: false,
-        performance: true,
-        reasons: true,
-        source: false,
-        timings: true,
-        version: true,
-        warnings: true
+  return buildDocsJsExamples(build).then(
+    () =>
+      new Promise((resolve, reject) => {
+        webpack(config, function(err, stats) {
+          if (err) {
+            log('[webpack]', err);
+            reject();
+          } else {
+            log(
+              '[webpack]',
+              stats.toString({
+                cached: false,
+                cachedAssets: false,
+                children: true,
+                chunks: false,
+                chunkModules: false,
+                chunkOrigins: true,
+                colors: true,
+                entrypoints: false,
+                errorDetails: false,
+                hash: false,
+                modules: false,
+                performance: true,
+                reasons: true,
+                source: false,
+                timings: true,
+                version: true,
+                warnings: true
+              })
+            );
+            resolve();
+          }
+        });
       })
-    );
-
-    cb();
-  });
+  );
 }
 
 function buildDocsHtml(build, cb) {
@@ -300,12 +341,12 @@ gulp.task('build-docs-css:prod', function() {
   return buildDocsCss(PROD);
 });
 
-gulp.task('build-docs-js:dev', function(cb) {
-  buildDocsJs(DEV, cb);
+gulp.task('build-docs-js:dev', function() {
+  return buildDocsJs(DEV);
 });
 
-gulp.task('build-docs-js:prod', function(cb) {
-  buildDocsJs(PROD, cb);
+gulp.task('build-docs-js:prod', function() {
+  return buildDocsJs(PROD);
 });
 
 gulp.task('build-docs-vendor:dev', function() {
@@ -355,8 +396,9 @@ gulp.task('watch:livereload', function() {
     },
     {
       files: [
-        path.join(gulpConfig.docs.src, 'js/**/*'),
-        path.join(gulpConfig.finch.src, 'js/**/*')
+        path.join(gulpConfig.docs.src, 'js/**/*.js'),
+        path.join(gulpConfig.docs.src, 'js/**/*.jsx'),
+        path.join(gulpConfig.finch.src, 'js/**/*.js')
       ],
       tasks: ['build-docs-js:dev']
     },

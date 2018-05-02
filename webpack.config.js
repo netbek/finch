@@ -32,6 +32,7 @@ module.exports = {
               ]
             }
           },
+          plugins: ['babel-plugin-static-fs'],
           presets: [
             [
               'env',

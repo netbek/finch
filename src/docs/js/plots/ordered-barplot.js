@@ -1,6 +1,6 @@
 import finch from '../../../finch/js';
 
-export default finch('data/iris.csv')
+const {spec} = finch('data/iris.csv')
   .title(`Edgar Anderson's Iris Data`)
   .width(200)
   .height(90)
@@ -9,4 +9,6 @@ export default finch('data/iris.csv')
   .y('species', 'nominal', {
     scale: {padding: 0.25},
     sort: {op: 'max', field: 'sepalLength', order: 'descending'}
-  }).spec;
+  });
+
+export default spec;
