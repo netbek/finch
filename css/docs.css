@@ -1,9 +1,8 @@
 .example {
+  font-size: 16px;
   position: relative;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  margin: 1.5em auto; }
+  margin: 0 0 3em;
+  max-width: 55%; }
   .example__output {
     position: relative;
     padding: 1em; }
@@ -11,7 +10,8 @@
       white-space: nowrap; }
   .example__code {
     position: relative;
-    border-top: 1px solid #ccc;
+    -webkit-border-radius: .5em;
+            border-radius: .5em;
     background: #eee; }
     .example__code code,
     .example__code pre {
@@ -29,3 +29,6 @@
       overflow: auto; }
       .example__code pre code {
         font-size: 1em; }
+
+figure + .example {
+  margin-top: -1.5em; }
