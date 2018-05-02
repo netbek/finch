@@ -2,7 +2,6 @@
   font-size: 16px; // Reset tufte-css
   position: relative;
   margin: 0 0 3em;
-  max-width: 55%;
 
   &__output {
     position: relative;
@@ -44,4 +43,11 @@
 
 figure + .example {
   margin-top: -1.5em;
+}
+
+@media (min-width: 761px) {
+  .example {
+    width: 90%;
+    max-width: 48em;
+  }
 }
