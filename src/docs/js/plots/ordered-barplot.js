@@ -9,6 +9,7 @@ const {spec} = finch('data/iris.csv')
   .y('species', 'n', {
     scale: {padding: 0.25},
     sort: {op: 'max', field: 'sepalLength', order: 'descending'}
-  });
+  })
+  .tooltip('sepalLength', 'q', {aggregate: 'max'});
 
 export default spec;

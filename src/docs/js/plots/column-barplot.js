@@ -16,6 +16,7 @@ const {spec} = finch({
     scale: {padding: 0.25},
     timeUnit: 'month'
   })
-  .y('value', 'q');
+  .y('value', 'q')
+  .tooltip('value', 'q');
 
 export default spec;

@@ -7,6 +7,10 @@ const {spec} = finch('data/iris.csv')
   .circle()
   .x('petalLength', 'q')
   .y('sepalLength', 'q')
-  .color('species', 'n');
+  .color('species', 'n')
+  .tooltip([
+    {field: 'sepalLength', type: 'q'},
+    {field: 'petalLength', type: 'q'}
+  ]);
 
 export default spec;

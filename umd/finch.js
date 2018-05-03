@@ -112,6 +112,23 @@ var get = function get(map, key, defaultValue) {
   return key;
 };
 
+var parseFieldDef = function parseFieldDef(field, type, opts) {
+  var result = {};
+
+  if (field) {
+    result.field = field;
+    result.type = get(typeMap, type);
+  } else if (type) {
+    result.type = get(typeMap, type);
+  }
+
+  if ((0, _vega.isObject)(opts)) {
+    result = _extends({}, result, opts);
+  }
+
+  return result;
+};
+
 var Spec = function () {
   function Spec(data) {
     _classCallCheck(this, Spec);
@@ -164,24 +181,17 @@ var Spec = function () {
   };
 
   Spec.prototype.__channel = function __channel(prop, field, type, opts) {
-    var result = {};
+    var maybeArray = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
-    if (field) {
-      result.field = field;
-      result.type = get(typeMap, type);
-    } else if (type) {
-      result.type = get(typeMap, type);
-    }
-
-    if ((0, _vega.isObject)(opts)) {
-      result = _extends({}, result, opts);
-    }
+    var fieldDef = maybeArray && (0, _vega.isArray)(field) ? field.map(function (d) {
+      return parseFieldDef(d.field, d.type, opts);
+    }) : parseFieldDef(field, type, opts);
 
     if (!this.spec.encoding) {
       this.spec.encoding = {};
     }
 
-    this.spec.encoding[prop] = result;
+    this.spec.encoding[prop] = fieldDef;
 
     return this;
   };
@@ -239,7 +249,7 @@ var Spec = function () {
   };
 
   Spec.prototype.tooltip = function tooltip(field, type, opts) {
-    return this.__channel('tooltip', field, type, opts);
+    return this.__channel('tooltip', field, type, opts, true);
   };
 
   Spec.prototype.href = function href(field, type, opts) {

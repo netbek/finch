@@ -8,6 +8,7 @@ const {spec} = finch('data/iris.csv')
   .x('sepalLength', 'q', {
     bin: true
   })
-  .y(null, 'q', {aggregate: 'count'});
+  .y(null, 'q', {aggregate: 'count'})
+  .tooltip(null, 'q', {aggregate: 'count'});
 
 export default spec;

@@ -18,6 +18,23 @@ const get = (map, key, defaultValue) => {
   return key;
 };
 
+const parseFieldDef = (field, type, opts) => {
+  let result = {};
+
+  if (field) {
+    result.field = field;
+    result.type = get(typeMap, type);
+  } else if (type) {
+    result.type = get(typeMap, type);
+  }
+
+  if (isObject(opts)) {
+    result = {...result, ...opts};
+  }
+
+  return result;
+};
+
 class Spec {
   constructor(data) {
     this.spec = {
@@ -74,25 +91,17 @@ class Spec {
     return this;
   }
 
-  __channel(prop, field, type, opts) {
-    let result = {};
-
-    if (field) {
-      result.field = field;
-      result.type = get(typeMap, type);
-    } else if (type) {
-      result.type = get(typeMap, type);
-    }
-
-    if (isObject(opts)) {
-      result = {...result, ...opts};
-    }
+  __channel(prop, field, type, opts, maybeArray = false) {
+    const fieldDef =
+      maybeArray && isArray(field)
+        ? field.map(d => parseFieldDef(d.field, d.type, opts))
+        : parseFieldDef(field, type, opts);
 
     if (!this.spec.encoding) {
       this.spec.encoding = {};
     }
 
-    this.spec.encoding[prop] = result;
+    this.spec.encoding[prop] = fieldDef;
 
     return this;
   }
@@ -164,7 +173,7 @@ class Spec {
 
   // https://vega.github.io/vega-lite/docs/encoding.html#text
   tooltip(field, type, opts) {
-    return this.__channel('tooltip', field, type, opts);
+    return this.__channel('tooltip', field, type, opts, true);
   }
 
   // https://vega.github.io/vega-lite/docs/encoding.html#href

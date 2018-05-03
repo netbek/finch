@@ -8,6 +8,7 @@ const {spec} = finch('data/iris.csv')
     bin: true
   })
   .y(null, 'q', {aggregate: 'count'})
+  .tooltip(null, 'q', {aggregate: 'count'})
   .column('species', 'n');
 
 // Long-form version using the `facet` method
@@ -26,6 +27,7 @@ const {spec} = finch('data/iris.csv')
 //       bin: true
 //     })
 //     .y(null, 'q', {aggregate: 'count'})
+//     .tooltip(null, 'q', {aggregate: 'count'})
 // );
 
 export default spec;

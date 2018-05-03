@@ -23,7 +23,11 @@ const {spec} = finch('data/iris.csv')
         .circle()
         .x('petalLength', 'q', {axis: {title: null}})
         .y('sepalLength', 'q', {axis: {title: null}})
-        .color('species', 'n'),
+        .color('species', 'n')
+        .tooltip([
+          {field: 'sepalLength', type: 'q'},
+          {field: 'petalLength', type: 'q'}
+        ]),
       finch()
         .width(300)
         .tick()
