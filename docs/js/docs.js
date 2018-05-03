@@ -750,7 +750,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'h3',
           null,
-          'Dot-dash plot'
+          'Dot-dash scatterplot'
         ),
         _react2.default.createElement(
           'figure',

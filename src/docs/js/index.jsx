@@ -165,7 +165,7 @@ class App extends Component {
         <section>
           <h2>Compound plots</h2>
 
-          <h3>Dot-dash plot</h3>
+          <h3>Dot-dash scatterplot</h3>
           <figure>
             <div id="dot-dash-plot" />
           </figure>
