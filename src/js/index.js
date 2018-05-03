@@ -1,5 +1,4 @@
 import {isArray, isObject, isString} from 'vega';
-import {finch as theme} from './themes';
 
 const typeMap = {
   q: 'quantitative',
@@ -40,7 +39,7 @@ class Spec {
     this.spec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v2.json'
     };
-    return this.config(theme).data(data);
+    return this.data(data);
   }
 
   // https://vega.github.io/vega-lite/docs/config.html

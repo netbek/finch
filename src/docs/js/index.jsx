@@ -3,6 +3,7 @@ import {join} from 'path';
 import _ from 'lodash';
 import React, {Component} from 'react';
 import vegaEmbed from 'vega-embed';
+import {finch as theme} from '../../js/themes';
 import * as plots from './plots';
 import Example from './example';
 
@@ -12,6 +13,7 @@ class App extends Component {
       .filter(d => !~d.indexOf('__') && d !== 'default')
       .forEach(d => {
         vegaEmbed(`#${_.kebabCase(d)}`, plots[d], {
+          config: theme,
           actions: {
             export: false,
             source: true,

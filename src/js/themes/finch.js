@@ -12,7 +12,6 @@ const lightGrey = '#ccc';
 const sansSerif = 'Helvetica, Arial, sans-serif';
 const serif = 'Georgia, Times, serif';
 const monospace = 'Consolas, "Liberation Mono", Menlo, Courier, monospace';
-const letterSpacing = 'normal';
 const fontSize = 12;
 
 export default {
@@ -26,7 +25,7 @@ export default {
     labelFontSize: fontSize,
     labelFontWeight: 'normal',
     titleColor: darkGrey,
-    titleFont: serif,
+    titleFont: monospace,
     titleFontSize: fontSize,
     titleFontWeight: 'bold'
   },
@@ -37,7 +36,7 @@ export default {
     labelFont: monospace,
     labelFontSize: fontSize,
     labelFontWeight: 'normal',
-    titleFont: serif,
+    titleFont: monospace,
     titleFontSize: fontSize,
     titleFontWeight: 'bold'
   },
@@ -51,7 +50,7 @@ export default {
   },
   style: {
     'guide-title': {
-      font: serif,
+      font: monospace,
       fontSize: fontSize,
       fontWeight: 'bold'
     },
@@ -63,7 +62,7 @@ export default {
   },
   title: {
     color: darkGrey,
-    font: serif,
+    font: monospace,
     fontSize: 16,
     fontWeight: 'bold',
     offset: 12

@@ -7,7 +7,7 @@
 		exports["finch"] = factory(require("vega"));
 	else
 		root["finch"] = factory(root["vega"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,26 +70,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _vega = __webpack_require__(0);
-
-var _themes = __webpack_require__(2);
+var _vega = __webpack_require__(1);
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -136,7 +128,7 @@ var Spec = function () {
     this.spec = {
       $schema: 'https://vega.github.io/schema/vega-lite/v2.json'
     };
-    return this.config(_themes.finch).data(data);
+    return this.data(data);
   }
 
   Spec.prototype.config = function config(opts) {
@@ -402,94 +394,10 @@ exports.default = function (data) {
 };
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 1 */
+/***/ (function(module, exports) {
 
-exports.__esModule = true;
-
-var _finch = __webpack_require__(3);
-
-Object.defineProperty(exports, 'finch', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_finch).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports.__esModule = true;
-
-var _vega = __webpack_require__(0);
-
-var defaultColor = (0, _vega.scheme)('category10')[0];
-var darkGrey = '#252525';
-var lightGrey = '#ccc';
-
-var sansSerif = 'Helvetica, Arial, sans-serif';
-var serif = 'Georgia, Times, serif';
-var monospace = 'Consolas, "Liberation Mono", Menlo, Courier, monospace';
-var letterSpacing = 'normal';
-var fontSize = 12;
-
-exports.default = {
-  axis: {
-    domainColor: darkGrey,
-    domainWidth: 1,
-    gridColor: lightGrey,
-    gridDash: [3, 3],
-    labelColor: darkGrey,
-    labelFont: monospace,
-    labelFontSize: fontSize,
-    labelFontWeight: 'normal',
-    titleColor: darkGrey,
-    titleFont: serif,
-    titleFontSize: fontSize,
-    titleFontWeight: 'bold'
-  },
-  bar: {
-    fill: defaultColor
-  },
-  legend: {
-    labelFont: monospace,
-    labelFontSize: fontSize,
-    labelFontWeight: 'normal',
-    titleFont: serif,
-    titleFontSize: fontSize,
-    titleFontWeight: 'bold'
-  },
-  line: {
-    stroke: defaultColor
-  },
-  range: {
-    category: {
-      scheme: 'category10'
-    }
-  },
-  style: {
-    'guide-title': {
-      font: serif,
-      fontSize: fontSize,
-      fontWeight: 'bold'
-    },
-    'guide-label': {
-      font: monospace,
-      fontSize: fontSize,
-      fontWeight: 'normal'
-    }
-  },
-  title: {
-    color: darkGrey,
-    font: serif,
-    fontSize: 16,
-    fontWeight: 'bold',
-    offset: 12
-  }
-};
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 
 /***/ })
 /******/ ])["default"];

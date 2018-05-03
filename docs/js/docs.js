@@ -93,11 +93,13 @@ var _vegaEmbed = __webpack_require__(6);
 
 var _vegaEmbed2 = _interopRequireDefault(_vegaEmbed);
 
-var _plots = __webpack_require__(7);
+var _themes = __webpack_require__(7);
+
+var _plots = __webpack_require__(10);
 
 var plots = _interopRequireWildcard(_plots);
 
-var _example = __webpack_require__(18);
+var _example = __webpack_require__(21);
 
 var _example2 = _interopRequireDefault(_example);
 
@@ -125,6 +127,7 @@ var App = function (_Component) {
       return !~d.indexOf('__') && d !== 'default';
     }).forEach(function (d) {
       (0, _vegaEmbed2.default)('#' + _lodash2.default.kebabCase(d), plots[d], {
+        config: _themes.finch,
         actions: {
           export: false,
           source: true,
@@ -871,7 +874,102 @@ module.exports = vegaEmbed;
 
 exports.__esModule = true;
 
-var _boxplot = __webpack_require__(8);
+var _finch = __webpack_require__(8);
+
+Object.defineProperty(exports, 'finch', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_finch).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.__esModule = true;
+
+var _vega = __webpack_require__(9);
+
+var defaultColor = (0, _vega.scheme)('category10')[0];
+var darkGrey = '#252525';
+var lightGrey = '#ccc';
+
+var sansSerif = 'Helvetica, Arial, sans-serif';
+var serif = 'Georgia, Times, serif';
+var monospace = 'Consolas, "Liberation Mono", Menlo, Courier, monospace';
+var fontSize = 12;
+
+exports.default = {
+  axis: {
+    domainColor: darkGrey,
+    domainWidth: 1,
+    gridColor: lightGrey,
+    gridDash: [3, 3],
+    labelColor: darkGrey,
+    labelFont: monospace,
+    labelFontSize: fontSize,
+    labelFontWeight: 'normal',
+    titleColor: darkGrey,
+    titleFont: monospace,
+    titleFontSize: fontSize,
+    titleFontWeight: 'bold'
+  },
+  bar: {
+    fill: defaultColor
+  },
+  legend: {
+    labelFont: monospace,
+    labelFontSize: fontSize,
+    labelFontWeight: 'normal',
+    titleFont: monospace,
+    titleFontSize: fontSize,
+    titleFontWeight: 'bold'
+  },
+  line: {
+    stroke: defaultColor
+  },
+  range: {
+    category: {
+      scheme: 'category10'
+    }
+  },
+  style: {
+    'guide-title': {
+      font: monospace,
+      fontSize: fontSize,
+      fontWeight: 'bold'
+    },
+    'guide-label': {
+      font: monospace,
+      fontSize: fontSize,
+      fontWeight: 'normal'
+    }
+  },
+  title: {
+    color: darkGrey,
+    font: monospace,
+    fontSize: 16,
+    fontWeight: 'bold',
+    offset: 12
+  }
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = vega;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.__esModule = true;
+
+var _boxplot = __webpack_require__(11);
 
 Object.defineProperty(exports, 'boxplot', {
   enumerable: true,
@@ -880,7 +978,7 @@ Object.defineProperty(exports, 'boxplot', {
   }
 });
 
-var _columnBarplot = __webpack_require__(9);
+var _columnBarplot = __webpack_require__(12);
 
 Object.defineProperty(exports, 'columnBarplot', {
   enumerable: true,
@@ -889,7 +987,7 @@ Object.defineProperty(exports, 'columnBarplot', {
   }
 });
 
-var _dotDashPlot = __webpack_require__(10);
+var _dotDashPlot = __webpack_require__(13);
 
 Object.defineProperty(exports, 'dotDashPlot', {
   enumerable: true,
@@ -898,7 +996,7 @@ Object.defineProperty(exports, 'dotDashPlot', {
   }
 });
 
-var _facetedHistogram = __webpack_require__(11);
+var _facetedHistogram = __webpack_require__(14);
 
 Object.defineProperty(exports, 'facetedHistogram', {
   enumerable: true,
@@ -907,7 +1005,7 @@ Object.defineProperty(exports, 'facetedHistogram', {
   }
 });
 
-var _histogram = __webpack_require__(12);
+var _histogram = __webpack_require__(15);
 
 Object.defineProperty(exports, 'histogram', {
   enumerable: true,
@@ -916,7 +1014,7 @@ Object.defineProperty(exports, 'histogram', {
   }
 });
 
-var _lineplot = __webpack_require__(13);
+var _lineplot = __webpack_require__(16);
 
 Object.defineProperty(exports, 'lineplot', {
   enumerable: true,
@@ -925,7 +1023,7 @@ Object.defineProperty(exports, 'lineplot', {
   }
 });
 
-var _orderedBarplot = __webpack_require__(14);
+var _orderedBarplot = __webpack_require__(17);
 
 Object.defineProperty(exports, 'orderedBarplot', {
   enumerable: true,
@@ -934,7 +1032,7 @@ Object.defineProperty(exports, 'orderedBarplot', {
   }
 });
 
-var _scatterplot = __webpack_require__(15);
+var _scatterplot = __webpack_require__(18);
 
 Object.defineProperty(exports, 'scatterplot', {
   enumerable: true,
@@ -943,7 +1041,7 @@ Object.defineProperty(exports, 'scatterplot', {
   }
 });
 
-var _scatterplotMatrix = __webpack_require__(16);
+var _scatterplotMatrix = __webpack_require__(19);
 
 Object.defineProperty(exports, 'scatterplotMatrix', {
   enumerable: true,
@@ -952,7 +1050,7 @@ Object.defineProperty(exports, 'scatterplotMatrix', {
   }
 });
 
-var _stripplot = __webpack_require__(17);
+var _stripplot = __webpack_require__(20);
 
 Object.defineProperty(exports, 'stripplot', {
   enumerable: true,
@@ -964,7 +1062,7 @@ Object.defineProperty(exports, 'stripplot', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -981,7 +1079,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1007,7 +1105,7 @@ var _finch$transform$widt = (0, _finch2.default)({
 exports.default = spec;
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1035,7 +1133,7 @@ var _finch$config$hconcat = (0, _finch2.default)('data/iris.csv').config({
 exports.default = spec;
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1054,7 +1152,7 @@ var _finch$width$height$b = (0, _finch2.default)('data/iris.csv').width(150).hei
 exports.default = spec;
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1073,7 +1171,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1098,7 +1196,7 @@ var _finch$width$height$t = (0, _finch2.default)({
 exports.default = spec;
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1118,7 +1216,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1135,7 +1233,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1155,7 +1253,7 @@ var _finch$repeat = (0, _finch2.default)('data/iris.csv').repeat({
 exports.default = spec;
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1172,7 +1270,7 @@ var _finch$title$width$ti = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
