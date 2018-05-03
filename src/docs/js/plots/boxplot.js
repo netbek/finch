@@ -5,8 +5,8 @@ const {spec} = finch('data/iris.csv')
   .width(200)
   .height(200)
   .boxplot()
-  .x('sepalLength', 'quantitative', {axis: {title: 'sepalLength'}})
-  .y('species', 'nominal')
-  .color('species', 'nominal', {legend: null});
+  .x('sepalLength', 'q', {axis: {title: 'sepalLength'}})
+  .y('species', 'n')
+  .color('species', 'n', {legend: null});
 
 export default spec;

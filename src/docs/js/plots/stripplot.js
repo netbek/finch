@@ -4,8 +4,8 @@ const {spec} = finch('data/iris.csv')
   .title("Edgar Anderson's Iris Data")
   .width(200)
   .tick()
-  .x('sepalLength', 'quantitative')
-  .y('species', 'nominal')
-  .color('species', 'nominal', {legend: null});
+  .x('sepalLength', 'q')
+  .y('species', 'n')
+  .color('species', 'n', {legend: null});
 
 export default spec;

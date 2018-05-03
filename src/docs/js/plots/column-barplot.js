@@ -11,11 +11,11 @@ const {spec} = finch({
   .height(200)
   .title('Monthly sunspot data, 2001')
   .bar()
-  .x('date', 'ordinal', {
+  .x('date', 'o', {
     axis: {format: '%b'},
     scale: {padding: 0.25},
     timeUnit: 'month'
   })
-  .y('value', 'quantitative');
+  .y('value', 'q');
 
 export default spec;

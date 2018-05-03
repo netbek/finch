@@ -5,8 +5,8 @@ const {spec} = finch('data/iris.csv')
   .width(200)
   .height(200)
   .circle()
-  .x('petalLength', 'quantitative')
-  .y('sepalLength', 'quantitative')
-  .color('species', 'nominal');
+  .x('petalLength', 'q')
+  .y('sepalLength', 'q')
+  .color('species', 'n');
 
 export default spec;

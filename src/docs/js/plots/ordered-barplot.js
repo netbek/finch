@@ -5,8 +5,8 @@ const {spec} = finch('data/iris.csv')
   .width(200)
   .height(90)
   .bar()
-  .x('sepalLength', 'quantitative', {aggregate: 'max'})
-  .y('species', 'nominal', {
+  .x('sepalLength', 'q', {aggregate: 'max'})
+  .y('species', 'n', {
     scale: {padding: 0.25},
     sort: {op: 'max', field: 'sepalLength', order: 'descending'}
   });

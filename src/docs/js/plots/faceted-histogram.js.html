@@ -2,26 +2,26 @@
   <span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">{</span>binSpacing<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token string">'sepalLength'</span><span class="token punctuation">,</span> <span class="token string">'quantitative'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token string">'sepalLength'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     bin<span class="token punctuation">:</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'quantitative'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'nominal'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">// Long-form version using the `facet` method</span>
 <span class="token comment" spellcheck="true">// const {spec} = finch('data/iris.csv').facet(</span>
 <span class="token comment" spellcheck="true">//   {</span>
 <span class="token comment" spellcheck="true">//     column: {</span>
 <span class="token comment" spellcheck="true">//       field: 'species',</span>
-<span class="token comment" spellcheck="true">//       type: 'nominal'</span>
+<span class="token comment" spellcheck="true">//       type: 'n'</span>
 <span class="token comment" spellcheck="true">//     }</span>
 <span class="token comment" spellcheck="true">//   },</span>
 <span class="token comment" spellcheck="true">//   finch()</span>
 <span class="token comment" spellcheck="true">//     .width(150)</span>
 <span class="token comment" spellcheck="true">//     .height(150)</span>
 <span class="token comment" spellcheck="true">//     .bar({binSpacing: 0})</span>
-<span class="token comment" spellcheck="true">//     .x('sepalLength', 'quantitative', {</span>
+<span class="token comment" spellcheck="true">//     .x('sepalLength', 'q', {</span>
 <span class="token comment" spellcheck="true">//       bin: true</span>
 <span class="token comment" spellcheck="true">//     })</span>
-<span class="token comment" spellcheck="true">//     .y(null, 'quantitative', {aggregate: 'count'})</span>
+<span class="token comment" spellcheck="true">//     .y(null, 'q', {aggregate: 'count'})</span>
 <span class="token comment" spellcheck="true">// );</span></code></pre>

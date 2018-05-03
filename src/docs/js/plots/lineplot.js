@@ -10,10 +10,10 @@ const {spec} = finch({
   .height(200)
   .title('Monthly sunspot data, from 1749 to "Present"')
   .line()
-  .x('date', 'temporal', {
+  .x('date', 't', {
     scale: {type: 'time', nice: {interval: 'year', step: 10}},
     timeUnit: 'year'
   })
-  .y('value', 'quantitative');
+  .y('value', 'q');
 
 export default spec;

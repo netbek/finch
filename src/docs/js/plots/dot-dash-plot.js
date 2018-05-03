@@ -9,31 +9,31 @@ const {spec} = finch('data/iris.csv')
     finch()
       .height(300)
       .tick()
-      .y('sepalLength', 'quantitative', {
+      .y('sepalLength', 'q', {
         axis: {labels: false, domain: false, ticks: false}
       })
-      .x('species', 'nominal', {
+      .x('species', 'n', {
         axis: {title: null, labels: false, domain: false, ticks: false}
       })
-      .color('species', 'nominal', {legend: null}),
+      .color('species', 'n', {legend: null}),
     finch().vconcat(
       finch()
         .width(300)
         .height(300)
         .circle()
-        .x('petalLength', 'quantitative', {axis: {title: null}})
-        .y('sepalLength', 'quantitative', {axis: {title: null}})
-        .color('species', 'nominal'),
+        .x('petalLength', 'q', {axis: {title: null}})
+        .y('sepalLength', 'q', {axis: {title: null}})
+        .color('species', 'n'),
       finch()
         .width(300)
         .tick()
-        .x('petalLength', 'quantitative', {
+        .x('petalLength', 'q', {
           axis: {labels: false, domain: false, ticks: false}
         })
-        .y('species', 'nominal', {
+        .y('species', 'n', {
           axis: {title: null, labels: false, domain: false, ticks: false}
         })
-        .color('species', 'nominal', {legend: null})
+        .color('species', 'n', {legend: null})
     )
   );
 
