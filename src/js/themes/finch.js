@@ -63,7 +63,7 @@ export default {
   title: {
     color: darkGrey,
     font: monospace,
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold',
     offset: 12
   }
