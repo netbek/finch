@@ -19,13 +19,14 @@ const Promise = require('bluebird');
 const runSequence = require('run-sequence');
 const webpack = require('webpack');
 const webserver = require('gulp-webserver');
-const {name} = require('./package.json');
 
 Promise.promisifyAll(fs);
 
 /* -----------------------------------------------------------------------------
  * Config
  ---------------------------------------------------------------------------- */
+
+const name = 'finch';
 
 const gulpConfig = require('./gulp.config');
 

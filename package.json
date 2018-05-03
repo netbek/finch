@@ -1,7 +1,7 @@
 {
-  "name": "finch",
+  "name": "@netbek/finch",
   "version": "0.0.1",
-  "description": "",
+  "description": "A Vega-Lite specification generator for JavaScript",
   "main": "src/js/index.js",
   "files": [
     "LICENSE",
