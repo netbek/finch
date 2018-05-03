@@ -223,18 +223,27 @@ function buildDocsData(build) {
 }
 
 function buildDocsJsExamples(build) {
-  return glob(path.join(gulpConfig.docs.src, 'js/plots/*.js')).then(files =>
-    Promise.mapSeries(files, file =>
-      buildJsExample(
-        file,
-        path.join(
-          gulpConfig.docs.src,
-          'js/plots',
-          path.basename(file) + '.html'
+  // Find old examples
+  return glob(path.join(gulpConfig.docs.src, 'js/plots/*.html'))
+    .then(files =>
+      // Remove old examples
+      Promise.mapSeries(files, file => fs.removeAsync(file))
+    )
+    .then(() =>
+      // Build examples from all JS files except index file
+      glob(path.join(gulpConfig.docs.src, 'js/plots/!(index).js')).then(files =>
+        Promise.mapSeries(files, file =>
+          buildJsExample(
+            file,
+            path.join(
+              gulpConfig.docs.src,
+              'js/plots',
+              path.basename(file) + '.html'
+            )
+          )
         )
       )
-    )
-  );
+    );
 }
 
 /**
