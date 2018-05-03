@@ -55,6 +55,7 @@ module.exports = {
     ]
   },
   externals: {
+    '@netbek/finch': 'finch',
     lodash: '_',
     react: 'React',
     'react-dom': 'ReactDOM',

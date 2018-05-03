@@ -26,7 +26,10 @@ Promise.promisifyAll(fs);
  * Config
  ---------------------------------------------------------------------------- */
 
-const name = 'finch';
+const {name: packageName} = require('./package');
+const globalName = 'finch';
+
+const rootPath = path.resolve(__dirname) + '/';
 
 const gulpConfig = require('./gulp.config');
 
@@ -160,22 +163,43 @@ function buildModuleClean(build) {
  * @returns {Promise}
  */
 function buildModuleJs(build) {
-  return Promise.mapSeries(
-    [
-      {
-        ...webpackConfigProd,
-        entry: {
-          [name]: path.join(gulpConfig.module.src, 'js/index.js'),
-          [name + '.min']: path.join(gulpConfig.module.src, 'js/index.js')
-        },
-        output: {
-          filename: '[name].js',
-          path: path.join(gulpConfig.module.dist.umd),
-          libraryTarget: 'umd'
-        }
+  const configs = [
+    {
+      ...webpackConfigProd,
+      entry: {
+        [globalName]: path.join(gulpConfig.module.src, 'js/index.js'),
+        [globalName + '.min']: path.join(gulpConfig.module.src, 'js/index.js')
+      },
+      output: {
+        filename: '[name].js',
+        path: path.join(gulpConfig.module.dist.umd),
+        library: globalName,
+        libraryExport: 'default',
+        libraryTarget: 'umd'
       }
-    ],
-    config => buildJs(config)
+    }
+  ];
+
+  const outputPaths = configs.reduce(
+    (result, config) =>
+      [].concat(
+        result,
+        _.keys(config.entry).map(entry => ({
+          src: path.join(config.output.path, `${entry}.js`),
+          dest: path.join(
+            gulpConfig.docs.dist[build],
+            'vendor',
+            packageName,
+            gulpConfig.module.dist.umd.replace(rootPath, ''),
+            `${entry}.js`
+          )
+        }))
+      ),
+    []
+  );
+
+  return Promise.mapSeries(configs, config => buildJs(config)).then(() =>
+    Promise.mapSeries(outputPaths, ({src, dest}) => fs.copyAsync(src, dest))
   );
 }
 
@@ -324,18 +348,30 @@ function startWatch(files, tasks, livereload) {
  ---------------------------------------------------------------------------- */
 
 gulp.task('build', function(cb) {
-  runSequence('build-docs:prod', 'build-module', cb);
+  runSequence('build-docs:prod', 'build-module:prod', cb);
 });
 
-gulp.task('build-module', function(cb) {
-  runSequence('build-module-clean', 'build-module-js', cb);
+gulp.task('build-module:dev', function(cb) {
+  runSequence('build-module-clean:dev', 'build-module-js:dev', cb);
 });
 
-gulp.task('build-module-clean', function() {
+gulp.task('build-module:prod', function(cb) {
+  runSequence('build-module-clean:prod', 'build-module-js:prod', cb);
+});
+
+gulp.task('build-module-clean:dev', function() {
+  return buildModuleClean(DEV);
+});
+
+gulp.task('build-module-clean:prod', function() {
   return buildModuleClean(PROD);
 });
 
-gulp.task('build-module-js', function() {
+gulp.task('build-module-js:dev', function() {
+  return buildModuleJs(DEV);
+});
+
+gulp.task('build-module-js:prod', function() {
   return buildModuleJs(PROD);
 });
 
@@ -454,7 +490,7 @@ gulp.task('watch:livereload', function() {
         path.join(gulpConfig.docs.src, 'js/**/*.jsx'),
         path.join(gulpConfig.module.src, 'js/**/*.js')
       ],
-      tasks: ['build-docs-js:dev']
+      tasks: ['build-docs-js:dev', 'build-module-js:dev']
     },
     {
       files: [path.join(gulpConfig.docs.src, '*.html')],
@@ -472,6 +508,7 @@ gulp.task('watch:livereload', function() {
 gulp.task('livereload', function() {
   runSequence(
     'build-docs:dev',
+    'build-module:dev',
     'webserver-init',
     'livereload-init',
     'watch:livereload'

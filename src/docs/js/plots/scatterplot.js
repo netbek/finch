@@ -1,4 +1,4 @@
-import finch from '../../../js';
+import finch from '@netbek/finch';
 
 const {spec} = finch('data/iris.csv')
   .title("Edgar Anderson's Iris Data")
