@@ -5,7 +5,19 @@
   <span class="token punctuation">.</span><span class="token function">circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token string">'petalLength'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token string">'sepalLength'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">color</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">color</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    condition<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      selection<span class="token punctuation">:</span> <span class="token string">'hover'</span><span class="token punctuation">,</span>
+      value<span class="token punctuation">:</span> <span class="token string">'black'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">selection</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    hover<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'single'</span><span class="token punctuation">,</span>
+      on<span class="token punctuation">:</span> <span class="token string">'mouseover'</span><span class="token punctuation">,</span>
+      empty<span class="token punctuation">:</span> <span class="token string">'none'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">tooltip</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>field<span class="token punctuation">:</span> <span class="token string">'sepalLength'</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">'q'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>field<span class="token punctuation">:</span> <span class="token string">'petalLength'</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">'q'</span><span class="token punctuation">}</span>

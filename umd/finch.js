@@ -172,6 +172,11 @@ var Spec = function () {
     return this;
   };
 
+  Spec.prototype.selection = function selection(opts) {
+    this.spec.selection = opts;
+    return this;
+  };
+
   Spec.prototype.__channel = function __channel(prop, field, type, opts) {
     var maybeArray = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 

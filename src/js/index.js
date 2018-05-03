@@ -90,6 +90,12 @@ class Spec {
     return this;
   }
 
+  // https://vega.github.io/vega-lite/docs/selection.html
+  selection(opts) {
+    this.spec.selection = opts;
+    return this;
+  }
+
   __channel(prop, field, type, opts, maybeArray = false) {
     const fieldDef =
       maybeArray && isArray(field)

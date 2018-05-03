@@ -17,6 +17,19 @@ const {spec} = finch({
     timeUnit: 'month'
   })
   .y('value', 'q')
+  .color(null, 'q', {
+    condition: {
+      selection: 'hover',
+      value: 'black'
+    }
+  })
+  .selection({
+    hover: {
+      type: 'single',
+      on: 'mouseover',
+      empty: 'none'
+    }
+  })
   .tooltip('value', 'q');
 
 export default spec;
