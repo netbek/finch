@@ -16,4 +16,8 @@ const {spec} = finch({
   })
   .y('value', 'q');
 
+// No tooltip for `line` mark. See the following issues:
+// * Feature request: https://github.com/vega/vega-tooltip/issues/120
+// * Workaround: https://github.com/vega/vega-lite/issues/1921#issuecomment-298678178
+
 export default spec;
