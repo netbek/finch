@@ -76,12 +76,15 @@ class App extends Component {
             {readFileSync(join(__dirname, 'plots/histogram.js.html'), 'utf8')}
           </Example>
 
-          <h3>Strip plot</h3>
+          <h3>Barcode plot</h3>
           <figure>
-            <div id="stripplot" />
+            <div id="barcode-plot" />
           </figure>
           <Example>
-            {readFileSync(join(__dirname, 'plots/stripplot.js.html'), 'utf8')}
+            {readFileSync(
+              join(__dirname, 'plots/barcode-plot.js.html'),
+              'utf8'
+            )}
           </Example>
 
           <h3>Dot plot</h3>

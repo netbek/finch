@@ -241,12 +241,12 @@ var App = function (_Component) {
         _react2.default.createElement(
           'h3',
           null,
-          'Strip plot'
+          'Barcode plot'
         ),
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'stripplot' })
+          _react2.default.createElement('div', { id: 'barcode-plot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -969,7 +969,16 @@ module.exports = vega;
 
 exports.__esModule = true;
 
-var _boxplot = __webpack_require__(11);
+var _barcodePlot = __webpack_require__(11);
+
+Object.defineProperty(exports, 'barcodePlot', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_barcodePlot).default;
+  }
+});
+
+var _boxplot = __webpack_require__(12);
 
 Object.defineProperty(exports, 'boxplot', {
   enumerable: true,
@@ -978,7 +987,7 @@ Object.defineProperty(exports, 'boxplot', {
   }
 });
 
-var _columnBarplot = __webpack_require__(12);
+var _columnBarplot = __webpack_require__(13);
 
 Object.defineProperty(exports, 'columnBarplot', {
   enumerable: true,
@@ -987,7 +996,7 @@ Object.defineProperty(exports, 'columnBarplot', {
   }
 });
 
-var _dotDashPlot = __webpack_require__(13);
+var _dotDashPlot = __webpack_require__(14);
 
 Object.defineProperty(exports, 'dotDashPlot', {
   enumerable: true,
@@ -996,7 +1005,7 @@ Object.defineProperty(exports, 'dotDashPlot', {
   }
 });
 
-var _facetedHistogram = __webpack_require__(14);
+var _facetedHistogram = __webpack_require__(15);
 
 Object.defineProperty(exports, 'facetedHistogram', {
   enumerable: true,
@@ -1005,7 +1014,7 @@ Object.defineProperty(exports, 'facetedHistogram', {
   }
 });
 
-var _histogram = __webpack_require__(15);
+var _histogram = __webpack_require__(16);
 
 Object.defineProperty(exports, 'histogram', {
   enumerable: true,
@@ -1014,7 +1023,7 @@ Object.defineProperty(exports, 'histogram', {
   }
 });
 
-var _lineplot = __webpack_require__(16);
+var _lineplot = __webpack_require__(17);
 
 Object.defineProperty(exports, 'lineplot', {
   enumerable: true,
@@ -1023,7 +1032,7 @@ Object.defineProperty(exports, 'lineplot', {
   }
 });
 
-var _orderedBarplot = __webpack_require__(17);
+var _orderedBarplot = __webpack_require__(18);
 
 Object.defineProperty(exports, 'orderedBarplot', {
   enumerable: true,
@@ -1032,7 +1041,7 @@ Object.defineProperty(exports, 'orderedBarplot', {
   }
 });
 
-var _scatterplot = __webpack_require__(18);
+var _scatterplot = __webpack_require__(19);
 
 Object.defineProperty(exports, 'scatterplot', {
   enumerable: true,
@@ -1041,21 +1050,12 @@ Object.defineProperty(exports, 'scatterplot', {
   }
 });
 
-var _scatterplotMatrix = __webpack_require__(19);
+var _scatterplotMatrix = __webpack_require__(20);
 
 Object.defineProperty(exports, 'scatterplotMatrix', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_scatterplotMatrix).default;
-  }
-});
-
-var _stripplot = __webpack_require__(20);
-
-Object.defineProperty(exports, 'stripplot', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_stripplot).default;
   }
 });
 
@@ -1073,13 +1073,30 @@ var _finch2 = _interopRequireDefault(_finch);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _finch$title$width$ti = (0, _finch2.default)('data/iris.csv').title("Edgar Anderson's Iris Data").width(200).tick().x('sepalLength', 'q').y('species', 'n').color('species', 'n', { legend: null }),
+    spec = _finch$title$width$ti.spec;
+
+exports.default = spec;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.__esModule = true;
+
+var _finch = __webpack_require__(0);
+
+var _finch2 = _interopRequireDefault(_finch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar Anderson's Iris Data").width(200).height(200).boxplot().x('sepalLength', 'q', { axis: { title: 'sepalLength' } }).y('species', 'n').color('species', 'n', { legend: null }),
     spec = _finch$title$width$he.spec;
 
 exports.default = spec;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1105,7 +1122,7 @@ var _finch$transform$widt = (0, _finch2.default)({
 exports.default = spec;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1133,7 +1150,7 @@ var _finch$config$hconcat = (0, _finch2.default)('data/iris.csv').config({
 exports.default = spec;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1154,7 +1171,7 @@ var _finch$transform$widt = (0, _finch2.default)('data/iris.csv').transform([{
 exports.default = spec;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1173,7 +1190,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1198,7 +1215,7 @@ var _finch$width$height$t = (0, _finch2.default)({
 exports.default = spec;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1218,7 +1235,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1235,7 +1252,7 @@ var _finch$title$width$he = (0, _finch2.default)('data/iris.csv').title("Edgar A
 exports.default = spec;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
@@ -1251,23 +1268,6 @@ var _finch$repeat = (0, _finch2.default)('data/iris.csv').repeat({
   column: ['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth']
 }, (0, _finch2.default)().width(100).height(100).circle().x({ repeat: 'column' }, 'q').y({ repeat: 'row' }, 'q').color('species', 'n')),
     spec = _finch$repeat.spec;
-
-exports.default = spec;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports.__esModule = true;
-
-var _finch = __webpack_require__(0);
-
-var _finch2 = _interopRequireDefault(_finch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _finch$title$width$ti = (0, _finch2.default)('data/iris.csv').title("Edgar Anderson's Iris Data").width(200).tick().x('sepalLength', 'q').y('species', 'n').color('species', 'n', { legend: null }),
-    spec = _finch$title$width$ti.spec;
 
 exports.default = spec;
 
