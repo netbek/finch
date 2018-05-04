@@ -1,5 +1,6 @@
 import finch from '@netbek/finch';
 
+// https://vega.github.io/vega-lite/docs/repeat.html
 const {spec} = finch('data/iris.csv').repeat(
   {
     row: ['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth'],

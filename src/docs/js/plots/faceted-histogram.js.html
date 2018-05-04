@@ -1,31 +1,46 @@
-<pre><code><span class="token keyword">const</span> <span class="token punctuation">{</span>spec<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">finch</span><span class="token punctuation">(</span><span class="token string">'data/iris.csv'</span><span class="token punctuation">)</span>
+<pre><code><span class="token comment" spellcheck="true">// Example of bin transform and ordinal scale</span>
+<span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/bin.html#transform</span>
+<span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/facet.html#row--column-encoding-channels</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>spec<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">finch</span><span class="token punctuation">(</span><span class="token string">'data/iris.csv'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      bin<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      field<span class="token punctuation">:</span> <span class="token string">'sepalLength'</span><span class="token punctuation">,</span>
+      <span class="token keyword">as</span><span class="token punctuation">:</span> <span class="token string">'binSepalLength'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">{</span>binSpacing<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token string">'sepalLength'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    bin<span class="token punctuation">:</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token string">'binSepalLength'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>title<span class="token punctuation">:</span> <span class="token string">'sepalLength'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">,</span> title<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">color</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>mouseover<span class="token punctuation">:</span> <span class="token string">'black'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">tooltip</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Long-form version using the `facet` method</span>
-<span class="token comment" spellcheck="true">// const {spec} = finch('data/iris.csv').facet(</span>
-<span class="token comment" spellcheck="true">//   {</span>
-<span class="token comment" spellcheck="true">//     column: {</span>
-<span class="token comment" spellcheck="true">//       field: 'species',</span>
-<span class="token comment" spellcheck="true">//       type: 'n'</span>
+<span class="token comment" spellcheck="true">// Example of bin transform and `facet` method</span>
+<span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/facet.html</span>
+<span class="token comment" spellcheck="true">// const {spec} = finch('data/iris.csv')</span>
+<span class="token comment" spellcheck="true">//   .transform([</span>
+<span class="token comment" spellcheck="true">//     {</span>
+<span class="token comment" spellcheck="true">//       bin: true,</span>
+<span class="token comment" spellcheck="true">//       field: 'sepalLength',</span>
+<span class="token comment" spellcheck="true">//       as: 'binSepalLength'</span>
 <span class="token comment" spellcheck="true">//     }</span>
-<span class="token comment" spellcheck="true">//   },</span>
-<span class="token comment" spellcheck="true">//   finch()</span>
-<span class="token comment" spellcheck="true">//     .width(150)</span>
-<span class="token comment" spellcheck="true">//     .height(150)</span>
-<span class="token comment" spellcheck="true">//     .bar({binSpacing: 0})</span>
-<span class="token comment" spellcheck="true">//     .x('sepalLength', 'q', {</span>
-<span class="token comment" spellcheck="true">//       bin: true</span>
-<span class="token comment" spellcheck="true">//     })</span>
-<span class="token comment" spellcheck="true">//     .y(null, 'q', {aggregate: 'count'})</span>
-<span class="token comment" spellcheck="true">//     .color(null, 'q', {mouseover: 'black'})</span>
-<span class="token comment" spellcheck="true">//     .tooltip(null, 'q', {aggregate: 'count'})</span>
-<span class="token comment" spellcheck="true">// );</span></code></pre>
+<span class="token comment" spellcheck="true">//   ])</span>
+<span class="token comment" spellcheck="true">//   .facet(</span>
+<span class="token comment" spellcheck="true">//     {</span>
+<span class="token comment" spellcheck="true">//       column: {</span>
+<span class="token comment" spellcheck="true">//         field: 'species',</span>
+<span class="token comment" spellcheck="true">//         type: 'n'</span>
+<span class="token comment" spellcheck="true">//       }</span>
+<span class="token comment" spellcheck="true">//     },</span>
+<span class="token comment" spellcheck="true">//     finch()</span>
+<span class="token comment" spellcheck="true">//       .width(150)</span>
+<span class="token comment" spellcheck="true">//       .height(150)</span>
+<span class="token comment" spellcheck="true">//       .bar()</span>
+<span class="token comment" spellcheck="true">//       .x('binSepalLength', 'o', {title: 'sepalLength'})</span>
+<span class="token comment" spellcheck="true">//       .y(null, 'q', {aggregate: 'count', title: 'count'})</span>
+<span class="token comment" spellcheck="true">//       .color(null, 'q', {mouseover: 'black'})</span>
+<span class="token comment" spellcheck="true">//       .tooltip(null, 'q', {aggregate: 'count'})</span>
+<span class="token comment" spellcheck="true">//   );</span></code></pre>

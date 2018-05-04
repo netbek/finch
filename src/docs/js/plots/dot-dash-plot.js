@@ -1,5 +1,6 @@
 import finch from '@netbek/finch';
 
+// https://vega.github.io/vega-lite/docs/concat.html
 const {spec} = finch('data/iris.csv')
   .config({
     axisX: {titlePadding: 10},

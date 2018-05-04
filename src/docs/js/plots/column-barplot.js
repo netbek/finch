@@ -1,5 +1,7 @@
 import finch from '@netbek/finch';
 
+// https://vega.github.io/vega-lite/docs/data.html#format
+// https://vega.github.io/vega-lite/docs/timeunit.html
 const {spec} = finch({
   url: 'data/sunspot-month.csv',
   format: {

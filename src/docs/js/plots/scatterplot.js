@@ -1,5 +1,6 @@
 import finch from '@netbek/finch';
 
+// https://vega.github.io/vega-lite/docs/tooltip.html
 const {spec} = finch('data/iris.csv')
   .title("Edgar Anderson's Iris Data")
   .width(200)
