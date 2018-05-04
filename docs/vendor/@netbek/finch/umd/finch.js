@@ -83,9 +83,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _vega = __webpack_require__(1);
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var typeMap = {
   q: 'quantitative',
@@ -104,7 +104,7 @@ var get = function get(map, key, defaultValue) {
   return key;
 };
 
-var parseFieldDef = function parseFieldDef(field, type, opts) {
+var parseChannelDef = function parseChannelDef(field, type, opts) {
   var result = {};
 
   if (field) {
@@ -118,7 +118,47 @@ var parseFieldDef = function parseFieldDef(field, type, opts) {
     result = _extends({}, result, opts);
   }
 
-  return result;
+  var _result = result,
+      mouseover = _result.mouseover,
+      channelDef = _objectWithoutProperties(_result, ['mouseover']);
+
+  return { channelDef: channelDef, mouseover: mouseover };
+};
+
+var parseMouseoverDef = function parseMouseoverDef(mouseover) {
+  if (!mouseover) {
+    return { condition: {}, selection: {} };
+  }
+
+  if ((0, _vega.isObject)(mouseover)) {
+    var bind = mouseover.bind,
+        encodings = mouseover.encodings,
+        fields = mouseover.fields,
+        nearest = mouseover.nearest,
+        toggle = mouseover.toggle,
+        translate = mouseover.translate,
+        zoom = mouseover.zoom,
+        condition = _objectWithoutProperties(mouseover, ['bind', 'encodings', 'fields', 'nearest', 'toggle', 'translate', 'zoom']);
+
+    var selection = {
+      bind: bind,
+      encodings: encodings,
+      fields: fields,
+      nearest: nearest,
+      toggle: toggle,
+      translate: translate,
+      zoom: zoom
+    };
+
+    return { condition: condition, selection: selection };
+  }
+
+  return {
+    condition: {
+      value: mouseover
+    },
+    selection: {}
+  };
 };
 
 var Spec = function () {
@@ -178,17 +218,47 @@ var Spec = function () {
   };
 
   Spec.prototype.__channel = function __channel(prop, field, type, opts) {
-    var maybeArray = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-
-    var fieldDef = maybeArray && (0, _vega.isArray)(field) ? field.map(function (d) {
-      return parseFieldDef(d.field, d.type, opts);
-    }) : parseFieldDef(field, type, opts);
+    var maybeArray = prop === 'tooltip';
 
     if (!this.spec.encoding) {
       this.spec.encoding = {};
     }
 
-    this.spec.encoding[prop] = fieldDef;
+    if (maybeArray && (0, _vega.isArray)(field)) {
+      this.spec.encoding[prop] = field.map(function (d) {
+        return parseChannelDef(d.field, d.type, opts).channelDef;
+      });
+
+      return this;
+    }
+
+    var _parseChannelDef = parseChannelDef(field, type, opts),
+        channelDef = _parseChannelDef.channelDef,
+        mouseover = _parseChannelDef.mouseover;
+
+    if (mouseover) {
+      var _parseMouseoverDef = parseMouseoverDef(mouseover),
+          condition = _parseMouseoverDef.condition,
+          selection = _parseMouseoverDef.selection;
+
+      if (condition) {
+        if (!this.spec.selection) {
+          this.spec.selection = {};
+        }
+
+        this.spec.selection.mouseover = _extends({
+          type: 'single',
+          on: 'mouseover',
+          empty: 'none'
+        }, selection);
+
+        channelDef.condition = _extends({}, condition, {
+          selection: 'mouseover'
+        });
+      }
+    }
+
+    this.spec.encoding[prop] = channelDef;
 
     return this;
   };
@@ -246,7 +316,7 @@ var Spec = function () {
   };
 
   Spec.prototype.tooltip = function tooltip(field, type, opts) {
-    return this.__channel('tooltip', field, type, opts, true);
+    return this.__channel('tooltip', field, type, opts);
   };
 
   Spec.prototype.href = function href(field, type, opts) {

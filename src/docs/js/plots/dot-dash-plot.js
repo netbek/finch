@@ -23,19 +23,7 @@ const {spec} = finch('data/iris.csv')
         .circle()
         .x('petalLength', 'q', {axis: {title: null}})
         .y('sepalLength', 'q', {axis: {title: null}})
-        .color('species', 'n', {
-          condition: {
-            selection: 'hover',
-            value: 'black'
-          }
-        })
-        .selection({
-          hover: {
-            type: 'single',
-            on: 'mouseover',
-            empty: 'none'
-          }
-        })
+        .color('species', 'n', {mouseover: 'black'})
         .tooltip([
           {field: 'sepalLength', type: 'q'},
           {field: 'petalLength', type: 'q'}

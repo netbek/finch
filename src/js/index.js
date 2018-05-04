@@ -17,7 +17,7 @@ const get = (map, key, defaultValue) => {
   return key;
 };
 
-const parseFieldDef = (field, type, opts) => {
+const parseChannelDef = (field, type, opts) => {
   let result = {};
 
   if (field) {
@@ -31,7 +31,47 @@ const parseFieldDef = (field, type, opts) => {
     result = {...result, ...opts};
   }
 
-  return result;
+  const {mouseover, ...channelDef} = result;
+
+  return {channelDef, mouseover};
+};
+
+const parseMouseoverDef = mouseover => {
+  if (!mouseover) {
+    return {condition: {}, selection: {}};
+  }
+
+  if (isObject(mouseover)) {
+    const {
+      bind,
+      encodings,
+      fields,
+      nearest,
+      toggle,
+      translate,
+      zoom,
+      ...condition
+    } = mouseover;
+
+    const selection = {
+      bind,
+      encodings,
+      fields,
+      nearest,
+      toggle,
+      translate,
+      zoom
+    };
+
+    return {condition, selection};
+  }
+
+  return {
+    condition: {
+      value: mouseover
+    },
+    selection: {}
+  };
 };
 
 class Spec {
@@ -96,17 +136,46 @@ class Spec {
     return this;
   }
 
-  __channel(prop, field, type, opts, maybeArray = false) {
-    const fieldDef =
-      maybeArray && isArray(field)
-        ? field.map(d => parseFieldDef(d.field, d.type, opts))
-        : parseFieldDef(field, type, opts);
+  __channel(prop, field, type, opts) {
+    const maybeArray = prop === 'tooltip';
 
     if (!this.spec.encoding) {
       this.spec.encoding = {};
     }
 
-    this.spec.encoding[prop] = fieldDef;
+    if (maybeArray && isArray(field)) {
+      this.spec.encoding[prop] = field.map(
+        d => parseChannelDef(d.field, d.type, opts).channelDef
+      );
+
+      return this;
+    }
+
+    const {channelDef, mouseover} = parseChannelDef(field, type, opts);
+
+    if (mouseover) {
+      const {condition, selection} = parseMouseoverDef(mouseover);
+
+      if (condition) {
+        if (!this.spec.selection) {
+          this.spec.selection = {};
+        }
+
+        this.spec.selection.mouseover = {
+          type: 'single',
+          on: 'mouseover',
+          empty: 'none',
+          ...selection
+        };
+
+        channelDef.condition = {
+          ...condition,
+          selection: 'mouseover'
+        };
+      }
+    }
+
+    this.spec.encoding[prop] = channelDef;
 
     return this;
   }
@@ -178,7 +247,7 @@ class Spec {
 
   // https://vega.github.io/vega-lite/docs/encoding.html#text
   tooltip(field, type, opts) {
-    return this.__channel('tooltip', field, type, opts, true);
+    return this.__channel('tooltip', field, type, opts);
   }
 
   // https://vega.github.io/vega-lite/docs/encoding.html#href

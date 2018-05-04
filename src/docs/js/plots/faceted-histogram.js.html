@@ -6,19 +6,7 @@
     bin<span class="token punctuation">:</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">color</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    condition<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      selection<span class="token punctuation">:</span> <span class="token string">'hover'</span><span class="token punctuation">,</span>
-      value<span class="token punctuation">:</span> <span class="token string">'black'</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">selection</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    hover<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      type<span class="token punctuation">:</span> <span class="token string">'single'</span><span class="token punctuation">,</span>
-      on<span class="token punctuation">:</span> <span class="token string">'mouseover'</span><span class="token punctuation">,</span>
-      empty<span class="token punctuation">:</span> <span class="token string">'none'</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">color</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>mouseover<span class="token punctuation">:</span> <span class="token string">'black'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">tooltip</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>aggregate<span class="token punctuation">:</span> <span class="token string">'count'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">column</span><span class="token punctuation">(</span><span class="token string">'species'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -38,18 +26,6 @@
 <span class="token comment" spellcheck="true">//       bin: true</span>
 <span class="token comment" spellcheck="true">//     })</span>
 <span class="token comment" spellcheck="true">//     .y(null, 'q', {aggregate: 'count'})</span>
-<span class="token comment" spellcheck="true">//     .color(null, 'q', {</span>
-<span class="token comment" spellcheck="true">//       condition: {</span>
-<span class="token comment" spellcheck="true">//         selection: 'hover',</span>
-<span class="token comment" spellcheck="true">//         value: 'black'</span>
-<span class="token comment" spellcheck="true">//       }</span>
-<span class="token comment" spellcheck="true">//     })</span>
-<span class="token comment" spellcheck="true">//     .selection({</span>
-<span class="token comment" spellcheck="true">//       hover: {</span>
-<span class="token comment" spellcheck="true">//         type: 'single',</span>
-<span class="token comment" spellcheck="true">//         on: 'mouseover',</span>
-<span class="token comment" spellcheck="true">//         empty: 'none'</span>
-<span class="token comment" spellcheck="true">//       }</span>
-<span class="token comment" spellcheck="true">//     })</span>
+<span class="token comment" spellcheck="true">//     .color(null, 'q', {mouseover: 'black'})</span>
 <span class="token comment" spellcheck="true">//     .tooltip(null, 'q', {aggregate: 'count'})</span>
 <span class="token comment" spellcheck="true">// );</span></code></pre>

@@ -9,19 +9,7 @@ const {spec} = finch('data/iris.csv')
     bin: true
   })
   .y(null, 'q', {aggregate: 'count'})
-  .color(null, 'q', {
-    condition: {
-      selection: 'hover',
-      value: 'black'
-    }
-  })
-  .selection({
-    hover: {
-      type: 'single',
-      on: 'mouseover',
-      empty: 'none'
-    }
-  })
+  .color(null, 'q', {mouseover: 'black'})
   .tooltip(null, 'q', {aggregate: 'count'});
 
 export default spec;
