@@ -7,7 +7,7 @@
 		exports["finch"] = factory(require("vega"));
 	else
 		root["finch"] = factory(root["vega"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,16 +70,31 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
 
-var _vl = __webpack_require__(1);
+var _vg = __webpack_require__(2);
+
+Object.defineProperty(exports, 'vg', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_vg).default;
+  }
+});
+
+var _vl = __webpack_require__(3);
 
 Object.defineProperty(exports, 'vl', {
   enumerable: true,
@@ -91,14 +106,86 @@ Object.defineProperty(exports, 'vl', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _vega = __webpack_require__(2);
+var _vega = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var typeMap = {
+  q: 'quantitative',
+  o: 'ordinal',
+  n: 'nominal',
+  t: 'temporal'
+};
+
+var Vg = function () {
+  function Vg(data) {
+    _classCallCheck(this, Vg);
+
+    this.spec = {
+      $schema: 'https://vega.github.io/schema/vega/v3.0.json'
+    };
+    return this.data(data);
+  }
+
+  Vg.prototype.config = function config(opts) {
+    this.spec.config = this.spec.config ? _extends({}, this.spec.config, opts) : opts;
+    return this;
+  };
+
+  Vg.prototype.title = function title(value) {
+    this.spec.title = value;
+    return this;
+  };
+
+  Vg.prototype.description = function description(value) {
+    this.spec.description = value;
+    return this;
+  };
+
+  Vg.prototype.width = function width(value) {
+    this.spec.width = value;
+    return this;
+  };
+
+  Vg.prototype.height = function height(value) {
+    this.spec.height = value;
+    return this;
+  };
+
+  Vg.prototype.data = function data(value) {
+    if ((0, _vega.isString)(value)) {
+      this.spec.data = { url: value };
+    } else if ((0, _vega.isArray)(value)) {
+      this.spec.data = { values: value };
+    } else if ((0, _vega.isObject)(value)) {
+      this.spec.data = value;
+    }
+    return this;
+  };
+
+  return Vg;
+}();
+
+exports.default = function (data) {
+  return new Vg(data);
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _vega = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -484,12 +571,6 @@ var Vl = function () {
 exports.default = function (data) {
   return new Vl(data);
 };
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ })
 /******/ ]);

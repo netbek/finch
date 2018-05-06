@@ -169,7 +169,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'scatterplot' })
+          _react2.default.createElement('div', { id: 'vl-scatterplot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -186,7 +186,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'xy-heatmap' },
+            { id: 'vl-xy-heatmap' },
             'TODO'
           )
         )
@@ -207,7 +207,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'ordered-barplot' })
+          _react2.default.createElement('div', { id: 'vl-ordered-barplot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -231,7 +231,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'histogram' })
+          _react2.default.createElement('div', { id: 'vl-histogram' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -246,7 +246,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'barcode-plot' })
+          _react2.default.createElement('div', { id: 'vl-barcode-plot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -263,7 +263,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'dotplot' },
+            { id: 'vl-dotplot' },
             'TODO'
           )
         ),
@@ -275,7 +275,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'boxplot' })
+          _react2.default.createElement('div', { id: 'vl-boxplot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -292,7 +292,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'violinplot' },
+            { id: 'vl-violinplot' },
             'TODO'
           )
         )
@@ -313,7 +313,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'lineplot' })
+          _react2.default.createElement('div', { id: 'vl-lineplot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -328,7 +328,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'column-barplot' })
+          _react2.default.createElement('div', { id: 'vl-column-barplot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -345,7 +345,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'calendar-heatmap' },
+            { id: 'vl-calendar-heatmap' },
             'TODO'
           )
         )
@@ -368,7 +368,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'column-magnitude' },
+            { id: 'vl-column-magnitude' },
             'TODO'
           )
         ),
@@ -382,7 +382,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'bar-magnitude' },
+            { id: 'vl-bar-magnitude' },
             'TODO'
           )
         )
@@ -405,7 +405,7 @@ var App = function (_Component) {
           null,
           _react2.default.createElement(
             'div',
-            { id: 'stacked-column' },
+            { id: 'vl-stacked-column' },
             'TODO'
           )
         )
@@ -446,7 +446,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'dot-dash-plot' })
+          _react2.default.createElement('div', { id: 'vl-dot-dash-plot' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -470,7 +470,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'faceted-histogram' })
+          _react2.default.createElement('div', { id: 'vl-faceted-histogram' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -485,7 +485,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'figure',
           null,
-          _react2.default.createElement('div', { id: 'scatterplot-matrix' })
+          _react2.default.createElement('div', { id: 'vl-scatterplot-matrix' })
         ),
         _react2.default.createElement(
           _example2.default,
@@ -971,7 +971,7 @@ exports.__esModule = true;
 
 var _barcodePlot = __webpack_require__(11);
 
-Object.defineProperty(exports, 'barcodePlot', {
+Object.defineProperty(exports, 'vlBarcodePlot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_barcodePlot).default;
@@ -980,7 +980,7 @@ Object.defineProperty(exports, 'barcodePlot', {
 
 var _boxplot = __webpack_require__(12);
 
-Object.defineProperty(exports, 'boxplot', {
+Object.defineProperty(exports, 'vlBoxplot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_boxplot).default;
@@ -989,7 +989,7 @@ Object.defineProperty(exports, 'boxplot', {
 
 var _columnBarplot = __webpack_require__(13);
 
-Object.defineProperty(exports, 'columnBarplot', {
+Object.defineProperty(exports, 'vlColumnBarplot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_columnBarplot).default;
@@ -998,7 +998,7 @@ Object.defineProperty(exports, 'columnBarplot', {
 
 var _dotDashPlot = __webpack_require__(14);
 
-Object.defineProperty(exports, 'dotDashPlot', {
+Object.defineProperty(exports, 'vlDotDashPlot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_dotDashPlot).default;
@@ -1007,7 +1007,7 @@ Object.defineProperty(exports, 'dotDashPlot', {
 
 var _facetedHistogram = __webpack_require__(15);
 
-Object.defineProperty(exports, 'facetedHistogram', {
+Object.defineProperty(exports, 'vlFacetedHistogram', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_facetedHistogram).default;
@@ -1016,7 +1016,7 @@ Object.defineProperty(exports, 'facetedHistogram', {
 
 var _histogram = __webpack_require__(16);
 
-Object.defineProperty(exports, 'histogram', {
+Object.defineProperty(exports, 'vlHistogram', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_histogram).default;
@@ -1025,7 +1025,7 @@ Object.defineProperty(exports, 'histogram', {
 
 var _lineplot = __webpack_require__(17);
 
-Object.defineProperty(exports, 'lineplot', {
+Object.defineProperty(exports, 'vlLineplot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_lineplot).default;
@@ -1034,7 +1034,7 @@ Object.defineProperty(exports, 'lineplot', {
 
 var _orderedBarplot = __webpack_require__(18);
 
-Object.defineProperty(exports, 'orderedBarplot', {
+Object.defineProperty(exports, 'vlOrderedBarplot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_orderedBarplot).default;
@@ -1043,7 +1043,7 @@ Object.defineProperty(exports, 'orderedBarplot', {
 
 var _scatterplot = __webpack_require__(19);
 
-Object.defineProperty(exports, 'scatterplot', {
+Object.defineProperty(exports, 'vlScatterplot', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_scatterplot).default;
@@ -1052,7 +1052,7 @@ Object.defineProperty(exports, 'scatterplot', {
 
 var _scatterplotMatrix = __webpack_require__(20);
 
-Object.defineProperty(exports, 'scatterplotMatrix', {
+Object.defineProperty(exports, 'vlScatterplotMatrix', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_scatterplotMatrix).default;

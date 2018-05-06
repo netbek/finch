@@ -1,10 +1,12 @@
-export {default as barcodePlot} from './barcode-plot';
-export {default as boxplot} from './boxplot';
-export {default as columnBarplot} from './column-barplot';
-export {default as dotDashPlot} from './dot-dash-plot';
-export {default as facetedHistogram} from './faceted-histogram';
-export {default as histogram} from './histogram';
-export {default as lineplot} from './lineplot';
-export {default as orderedBarplot} from './ordered-barplot';
-export {default as scatterplot} from './scatterplot';
-export {default as scatterplotMatrix} from './scatterplot-matrix';
+// export {default as vgBarcodePlot} from './vg/barcode-plot';
+
+export {default as vlBarcodePlot} from './vl/barcode-plot';
+export {default as vlBoxplot} from './vl/boxplot';
+export {default as vlColumnBarplot} from './vl/column-barplot';
+export {default as vlDotDashPlot} from './vl/dot-dash-plot';
+export {default as vlFacetedHistogram} from './vl/faceted-histogram';
+export {default as vlHistogram} from './vl/histogram';
+export {default as vlLineplot} from './vl/lineplot';
+export {default as vlOrderedBarplot} from './vl/ordered-barplot';
+export {default as vlScatterplot} from './vl/scatterplot';
+export {default as vlScatterplotMatrix} from './vl/scatterplot-matrix';
