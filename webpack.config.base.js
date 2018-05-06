@@ -60,6 +60,7 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM',
     vega: 'vega',
-    'vega-embed': 'vegaEmbed'
+    'vega-embed': 'vegaEmbed',
+    'vega-lite': 'vl'
   }
 };

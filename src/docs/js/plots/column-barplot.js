@@ -1,8 +1,8 @@
-import finch from '@netbek/finch';
+import {vl} from '@netbek/finch';
 
 // https://vega.github.io/vega-lite/docs/data.html#format
 // https://vega.github.io/vega-lite/docs/timeunit.html
-const {spec} = finch({
+const {spec} = vl({
   url: 'data/sunspot-month.csv',
   format: {
     parse: {date: 'date:"%Y-%m"'}

@@ -1,8 +1,8 @@
-import finch from '@netbek/finch';
+import {vl} from '@netbek/finch';
 
 // Example of binning in encoding field
 // https://vega.github.io/vega-lite/docs/bin.html#encoding
-const {spec} = finch('data/iris.csv')
+const {spec} = vl('data/iris.csv')
   .title("Edgar Anderson's Iris Data")
   .width(200)
   .height(200)

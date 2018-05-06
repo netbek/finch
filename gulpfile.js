@@ -174,7 +174,6 @@ function buildModuleJs(build) {
         filename: '[name].js',
         path: path.join(gulpConfig.module.dist.umd),
         library: globalName,
-        libraryExport: 'default',
         libraryTarget: 'umd'
       }
     }

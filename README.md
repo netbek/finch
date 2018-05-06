@@ -17,7 +17,7 @@ A Vega-Lite specification generator for JavaScript.
 2. If you use a module bundler, e.g. Webpack, then import the module:
 
     ```javascript
-    import finch from '@netbek/finch';
+    import {vl} from '@netbek/finch';
     ```
 
     If you don't use a module bundler, then add the script to your HTML document to export the `finch` global variable:
@@ -36,7 +36,7 @@ A Vega-Lite specification generator for JavaScript.
 ```html
 <div id="vis"></div>
 <script>
-  var spec = finch().spec;
+  var spec = finch.vl().spec;
   vegaEmbed('#vis', spec);
 </script>
 ```

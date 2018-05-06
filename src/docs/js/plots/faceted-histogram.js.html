@@ -1,7 +1,7 @@
 <pre><code><span class="token comment" spellcheck="true">// Example of bin transform and ordinal scale</span>
 <span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/bin.html#transform</span>
 <span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/facet.html#row--column-encoding-channels</span>
-<span class="token keyword">const</span> <span class="token punctuation">{</span>spec<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">finch</span><span class="token punctuation">(</span><span class="token string">'data/iris.csv'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>spec<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">vl</span><span class="token punctuation">(</span><span class="token string">'data/iris.csv'</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       bin<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -20,7 +20,7 @@
 
 <span class="token comment" spellcheck="true">// Example of bin transform and `facet` method</span>
 <span class="token comment" spellcheck="true">// https://vega.github.io/vega-lite/docs/facet.html</span>
-<span class="token comment" spellcheck="true">// const {spec} = finch('data/iris.csv')</span>
+<span class="token comment" spellcheck="true">// const {spec} = vl('data/iris.csv')</span>
 <span class="token comment" spellcheck="true">//   .transform([</span>
 <span class="token comment" spellcheck="true">//     {</span>
 <span class="token comment" spellcheck="true">//       bin: true,</span>
@@ -35,7 +35,7 @@
 <span class="token comment" spellcheck="true">//         type: 'n'</span>
 <span class="token comment" spellcheck="true">//       }</span>
 <span class="token comment" spellcheck="true">//     },</span>
-<span class="token comment" spellcheck="true">//     finch()</span>
+<span class="token comment" spellcheck="true">//     vl()</span>
 <span class="token comment" spellcheck="true">//       .width(150)</span>
 <span class="token comment" spellcheck="true">//       .height(150)</span>
 <span class="token comment" spellcheck="true">//       .bar()</span>

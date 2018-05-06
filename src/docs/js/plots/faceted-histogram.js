@@ -1,9 +1,9 @@
-import finch from '@netbek/finch';
+import {vl} from '@netbek/finch';
 
 // Example of bin transform and ordinal scale
 // https://vega.github.io/vega-lite/docs/bin.html#transform
 // https://vega.github.io/vega-lite/docs/facet.html#row--column-encoding-channels
-const {spec} = finch('data/iris.csv')
+const {spec} = vl('data/iris.csv')
   .transform([
     {
       bin: true,
@@ -22,7 +22,7 @@ const {spec} = finch('data/iris.csv')
 
 // Example of bin transform and `facet` method
 // https://vega.github.io/vega-lite/docs/facet.html
-// const {spec} = finch('data/iris.csv')
+// const {spec} = vl('data/iris.csv')
 //   .transform([
 //     {
 //       bin: true,
@@ -37,7 +37,7 @@ const {spec} = finch('data/iris.csv')
 //         type: 'n'
 //       }
 //     },
-//     finch()
+//     vl()
 //       .width(150)
 //       .height(150)
 //       .bar()

@@ -1,13 +1,13 @@
-import finch from '@netbek/finch';
+import {vl} from '@netbek/finch';
 
 // https://vega.github.io/vega-lite/docs/concat.html
-const {spec} = finch('data/iris.csv')
+const {spec} = vl('data/iris.csv')
   .config({
     axisX: {titlePadding: 10},
     axisY: {titlePadding: -15}
   })
   .hconcat(
-    finch()
+    vl()
       .height(300)
       .tick()
       .y('sepalLength', 'q', {
@@ -17,8 +17,8 @@ const {spec} = finch('data/iris.csv')
         axis: {title: null, labels: false, domain: false, ticks: false}
       })
       .color('species', 'n', {legend: null}),
-    finch().vconcat(
-      finch()
+    vl().vconcat(
+      vl()
         .width(300)
         .height(300)
         .circle()
@@ -29,7 +29,7 @@ const {spec} = finch('data/iris.csv')
           {field: 'sepalLength', type: 'q'},
           {field: 'petalLength', type: 'q'}
         ]),
-      finch()
+      vl()
         .width(300)
         .tick()
         .x('petalLength', 'q', {
