@@ -10,7 +10,7 @@ A Vega-Lite specification generator for JavaScript.
 
 1. Install Finch using [`npm`](https://www.npmjs.com/):
 
-    ```
+    ```shell
     npm i @netbek/finch
     ```
 

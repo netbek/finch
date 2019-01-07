@@ -1,18 +1,31 @@
 const _ = require('lodash');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const webpackConfigBase = require('./webpack.config.base');
 
 module.exports = _.merge({}, webpackConfigBase, {
+  mode: 'production',
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        include: /\.min\.js$/
+      })
+    ]
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      include: /\.min\.js$/
+    new HardSourceWebpackPlugin({
+      cacheDirectory: path.resolve(
+        process.cwd(),
+        'node_modules/.cache/hard-source/[confighash]'
+      )
     })
   ]
 });
