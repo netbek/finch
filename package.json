@@ -1,6 +1,6 @@
 {
   "name": "@netbek/finch",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A Vega-Lite specification generator for JavaScript",
   "main": "src/js/index.js",
   "files": [
@@ -86,6 +86,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.1",
     "gulp-webserver": "^0.9.1",
+    "hard-source-webpack-plugin": "^0.13.1",
     "livereload": "^0.7.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
@@ -95,11 +96,11 @@
     "pkg-dir": "^2.0.0",
     "prettier": "^1.13.7",
     "prism-themes": "^1.0.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "run-sequence": "^2.2.1",
-    "uglifyjs-webpack-plugin": "^1.2.5",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "vega-themes": "^2.0.0",
-    "webpack": "^3.11.0"
+    "webpack": "^4.28.3"
   }
 }
