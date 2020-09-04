@@ -92,7 +92,7 @@
     "moment": "^2.22.1",
     "node-prismjs": "^0.1.1",
     "open": "0.0.5",
-    "papaparse": "^4.4.0",
+    "papaparse": "^5.2.0",
     "pkg-dir": "^2.0.0",
     "prettier": "^1.13.7",
     "prism-themes": "^1.0.1",
